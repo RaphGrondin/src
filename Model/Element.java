@@ -1,40 +1,42 @@
 package Model;
 
-public class Element {
-	private float x;
-	private float y;
-	private String name;
-	private int size;
+public abstract class Element {
+	protected Vec position;
+	protected String name;
+	protected int size;
 	
 	public Element() {
-		this.x = 0;
-		this.y = 0;
 		this.name = "NULL";
 		this.size = 0;
+		this.position = null;
 	}
 	
-	public Element(float x, float y, String name, int size) {
-		this.x = x;
-		this.y = y;
+	public Element(double x, double y, String name, int size) {
+		this.position = new Vec(x,y);
 		this.name = name;
 		this.size = size;
 	}
-	
-	
-	public float getX() {
-		return this.x;
+
+	public Element (double x, double y) {
+		this.position = new Vec(x,y);
+		this.name = "Null";
+		this.size = 0;
 	}
 	
-	public void setX(float x) {
-		this.x = x;
+	public double getX() {
+		return this.position.getX();
 	}
 	
-	public float getY() {
-		return this.y;
+	public void setX(double x) {
+		this.position.setX(x);
 	}
 	
-	public void setY(float y) {
-		this.y = y;
+	public double getY() {
+		return this.position.getY();
+	}
+	
+	public void setY(double y) {
+		this.position.setY(y);
 	}
 	
 	public String getName() {

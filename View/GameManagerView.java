@@ -4,10 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-import Model.Animal;
-import Model.Case;
+import Model.Drone;
+import Model.Package;
 import Model.GameManager;
-import Model.Nourriture;
+import Model.Item;
+import Model.Station;
 
 @SuppressWarnings("serial")
 public class GameManagerView extends JPanel{
@@ -43,7 +44,7 @@ public class GameManagerView extends JPanel{
 	public void paintComponent(Graphics g) {		
 		g.setColor(new Color(0,200,0));
 		g.fillRect(0,0,getWidth(),getHeight());
-    	for (Case c : GameManager.getPlateau().getCases()) {    				
+    	for (Drone d : GameManager.getPlateau().getCases()) {
         	if (c.isAquatique()){ 
         		g.setColor(new Color(176,224,230));
         	} else {
