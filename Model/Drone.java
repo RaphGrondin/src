@@ -4,8 +4,8 @@ public class Drone extends Element {
 	private float fuel;
 	private int score;
 	
-	public Drone(float fuel, int score) {
-		super();
+	public Drone(float x, float y, String name, int size, float fuel, int score) {
+		super(x,y,name,size);
 		this.fuel = fuel;
 		this.score = score;
 	}
