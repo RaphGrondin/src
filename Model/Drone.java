@@ -8,6 +8,7 @@ public class Drone extends Element {
 		super(x,y,name,size);
 		this.fuel = fuel;
 		this.score = score;
+		System.out.println("Test");
 	}
 	
 	public int getScore() {

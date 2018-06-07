@@ -3,8 +3,8 @@ package Model;
 public class Package extends Element{
 	private int value;
 	
-	public Package(int value) {
-		super();
+	public Package(float x, float y, String name, int size, int value) {
+		super(x,y,name,size);
 		this.value = value;
 	}
 	
