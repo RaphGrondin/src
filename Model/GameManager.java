@@ -7,91 +7,75 @@ import java.util.Random;
 public class GameManager{
     private static ArrayList<Package> packages;
     private static ArrayList<Drone> drones;
-    private static Time t;
-    private static Plateau p;
+    private static ArrayList<Item> items;
+    private static ArrayList<Station> stations;
+    private static Time time;
+    private static Board board;
     private static int width = 1165;
     private static int height = 615;
 
     public GameManager() {
-        p = new Plateau();
-        t = new Time();
-        nourritures = new ArrayList<Nourriture>();
-        animaux = new ArrayList<Animal>();
+        board = new Board();
+        time = new Time();
+        packages = new ArrayList<Package>();
+        drones = new ArrayList<Drone>();
+        items = new ArrayList<Item>();
+        stations = new ArrayList<Station>();
     }
 
-    public static ArrayList<Nourriture> getNourritures() {
-        return nourritures;
+    public static ArrayList<Package> getPackages() {
+        return packages;
     }
-    public static ArrayList<Animal> getAnimaux() {
-        return animaux;
+    public static ArrayList<Drone> getDrones() {
+        return drones;
     }
-    public static Plateau getPlateau() {
-        return p;
+    public static ArrayList<Item> getItems() {
+        return items;
     }
-    public static Time getTemps() {
-        return t;
+    public static ArrayList<Station> getStations() {
+        return stations;
     }
-
-    public static void addNourritures(Nourriture n) {
-        nourritures.add(n);
+    public static Board getBoard() {
+        return board;
     }
-
-    public static void addAnimaux(Animal a) {
-        animaux.add(a);
+    public static Time getTime() {
+        return time;
     }
 
-    public static int nbAnimaux(){
-        return animaux.size();
+    public static void addPackage(Package p) {
+        packages.add(p);
     }
 
-    public static int nbCarnivores()
-    {
-        int cpt=0;
-        for (int i=0;i<animaux.size();i++)
-        {
-            if(animaux.get(i).IsCarnivore())cpt++;
-        }
-        return cpt;
-    }
-    public static int nbHerbivores()
-    {
-        int cpt=0;
-        for (int i=0;i<animaux.size();i++)
-        {
-            if(animaux.get(i).IsCarnivore()==false)cpt++;
-        }
-        return cpt;
+    public static void addItem(Item i) {
+        items.add(i);
     }
 
-    public static int nbNourritures()
-    {
-        return nourritures.size();
+    public static void addDrone(Drone d) {
+        drones.add(d);
     }
 
-    public static int nbViandes()
-    {
-        int cpt=0;
-        for (int i=0;i<nourritures.size();i++)
-        {
-            if(nourritures.get(i).isViande())cpt++;
-        }
-        return cpt;
+    public static void addStation(Station s) {
+        stations.add(s);
     }
-    public static int nbHerbes()
-    {
-        int cpt=0;
-        for (int i=0;i<nourritures.size();i++)
-        {
-            if(nourritures.get(i).isPlante())cpt++;
-        }
-        return cpt;
+
+    public static int nbPackages(){
+        return packages.size();
+    }
+    public static int nbDrones(){
+        return drones.size();
+    }
+    public static int nbItems(){
+        return items.size();
+    }
+    public static int nbStations(){
+        return stations.size();
     }
 
     public void go(){
         for(;;){
-            getTemps().setTmp();
-            if (getTemps().getM()==0 && nbHerbes() < 20) {
-                ajoutHerbe();
+            getTime().setTmp();
+            if (getTime().getM()==0 && nbItems() < 20) {
+                addItem();
             }
             for (int i=0; i<animaux.size();i++) {
                 //Case c = p.getCase(animaux.get(i).position.getX(), animaux.get(i).position.getY());
@@ -108,15 +92,21 @@ public class GameManager{
         }
     }
 
-    public static void ajoutHerbe()
+    public static void addItem()
     {
-        Nourriture n=new Nourriture(true);
-        nourritures.add(n);
+        Item i = new Item("Item");
+        items.add(i);
     }
-    public static void ajoutViande()
+    public static void addBigPackage()
     {
-        Nourriture n=new Nourriture(false,true,100,"Viande");
-        nourritures.add(n);
+        Package p = new BigPackage("Big Package");
+        packages.add(p);
+    }
+
+    public static void addLittlePackage()
+    {
+        Package p = new LittlePackage("Little Package");
+        packages.add(p);
     }
 
     public void ajoutNourriture(Nourriture n)

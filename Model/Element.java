@@ -1,16 +1,28 @@
 package Model;
 
+import java.util.Random;
+
 public abstract class Element {
 	protected Vec position;
 	protected String name;
 	protected int size;
 	
 	public Element() {
+		Random rnd = new Random();
+
+		int x = rnd.nextInt(GameManager.getLargeur());
+		int y = rnd.nextInt(GameManager.getHauteur());
+
 		this.name = "NULL";
 		this.size = 0;
-		this.position = null;
+		this.position = new Vec(x,y);
 	}
-	
+
+	public Element(String name) {
+		this();
+		this.name = name;
+	}
+
 	public Element(double x, double y, String name, int size) {
 		this.position = new Vec(x,y);
 		this.name = name;
