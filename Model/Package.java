@@ -3,8 +3,9 @@ package Model;
 public class Package extends Element{
 	private int value;
 
-	public Package(String name) {
+	public Package(String name, int size) {
 		super(name);
+		this.setSize(size);
 	}
 
 	public Package(float x, float y, String name, int size, int value) {

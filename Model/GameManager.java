@@ -77,12 +77,12 @@ public class GameManager{
             if (getTime().getM()==0 && nbItems() < 20) {
                 addItem();
             }
-            for (int i=0; i<animaux.size();i++) {
+            /*for (int i=0; i<animaux.size();i++) {
                 //Case c = p.getCase(animaux.get(i).position.getX(), animaux.get(i).position.getY());
                 animaux.get(i).run(animaux, nourritures, t, p.getCases());
                 //animaux.get(i).run(animaux,nourritures,t, c);
                 //animaux.get(i).modifVitesse(c);
-            }
+            }*/
 
             try {
                 Thread.sleep(16);
@@ -109,80 +109,34 @@ public class GameManager{
         packages.add(p);
     }
 
-    public void ajoutNourriture(Nourriture n)
+    public static void addBigDrone()
     {
-
-        nourritures.add(n);
+        Drone d = new BigDrone("Big Drone");
+        drones.add(d);
     }
 
-    public static void ajoutHerbivore()
+    public static void addLittleDrone()
     {
-        boolean diurne;
-        int vitMax=10;
-        int vitMin=2;
-        int poidsMax=100;
-        int poidsMin=10;
-        int tailleMax=30;
-        int tailleMin=10;
-        Random rnd = new Random();
-        int r = rnd.nextInt(100);
-        if(r<=75)
-        {
-            diurne=true;
-        }else diurne=false;
-        Random randV = new Random();
-        int vitesse = randV.nextInt(vitMax - vitMin + 1) + vitMin;
-        Random randP = new Random();
-        int poids = randP.nextInt(poidsMax - poidsMin + 1) + poidsMin;
-        Random randT = new Random();
-        int taille = randT.nextInt(tailleMax - tailleMin + 1) + tailleMin;
-        Animal a=new Animal(vitesse,poids,taille,false,diurne);
-        animaux.add(a);
-
-
+        Drone d = new LittleDrone("Little Drone");
+        drones.add(d);
     }
 
-    public static void ajoutCarnivore()
+    public static void createDrone (String name, int size)
     {
-
-        boolean diurne;
-        int vitMax=10;
-        int vitMin=2;
-        int poidsMax=100;
-        int poidsMin=10;
-        int tailleMax=30;
-        int tailleMin=10;
-        Random rnd = new Random();
-        int r = rnd.nextInt(100);
-        if(r<=75)
-        {
-            diurne=true;
-        }else diurne=false;
-        Random randV = new Random();
-        int vitesse = randV.nextInt(vitMax - vitMin + 1) + vitMin;
-        Random randP = new Random();
-        int poids = randP.nextInt(poidsMax - poidsMin + 1) + poidsMin;
-        Random randT = new Random();
-        int taille = randT.nextInt(tailleMax - tailleMin + 1) + tailleMin;
-        Animal a=new Animal(vitesse,poids,taille,true,diurne);
-        animaux.add(a);
-
-
-    }
-    public static void creationAnimal(String nom,boolean carn,boolean diurne,boolean terrestre, boolean aquatique,
-                                      boolean aerien,int nbPattes,int poids,int taille,int vitMax,int rouge,int vert,int bleu)
-
-    {
-        Animal a=new Animal(nom,carn,diurne,terrestre,aquatique,aerien,nbPattes,poids,taille,vitMax,rouge,vert,bleu);
-        animaux.add(a);
-
+        Drone d;
+        if (size == 10) {
+            d = new LittleDrone(name);
+        } else {
+            d = new BigDrone(name);
+        }
+        drones.add(d);
     }
 
-    public static int getLargeur() {
+    public static int getWidth() {
         return width;
     }
 
-    public static int getHauteur() {
+    public static int getHeight() {
         return height;
     }
 

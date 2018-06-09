@@ -3,12 +3,18 @@ package Model;
 public class Drone extends Element {
 	private float fuel;
 	private int score;
-	
+
+	public Drone(String name, int size) {
+		super(name);
+		this.setSize(size);
+		this.fuel = 100;
+		this.score = 0;
+	}
+
 	public Drone(float x, float y, String name, int size, float fuel, int score) {
 		super(x,y,name,size);
 		this.fuel = fuel;
 		this.score = score;
-		System.out.println("Test");
 	}
 	
 	public int getScore() {
