@@ -20,7 +20,7 @@ public class AddPackage extends JPanel implements ActionListener{
 	private Button herbe = new Button("Herbe"); 
 	private JLabel text = new JLabel("Ajouter");
 	
-	public AddPackage()
+	/*public AddPackage()
 	{
 		setBackground(Color.black);
 		setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.white));
@@ -36,15 +36,15 @@ public class AddPackage extends JPanel implements ActionListener{
 		viande.addActionListener(this);
 		herbe.addActionListener(this);
 	    
-	}
+	}*/
 	public void actionPerformed(ActionEvent arg0) {
 		
 		
-		 if(arg0.getSource() == herbe)
+		 /*if(arg0.getSource() == herbe)
 		 {	 
 
 			 GameManager.ajoutHerbe();
-		 }else GameManager.ajoutViande();
+		 }else GameManager.ajoutViande();*/
 		 
 }
 }

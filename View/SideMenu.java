@@ -24,7 +24,7 @@ public class SideMenu extends JPanel{
 		add(H);	
 	}
 	
-	public void paintComponent(Graphics g){
+	/*public void paintComponent(Graphics g){
 		g.setColor(Color.black);
 		g.fillRect(0, 0, this.getWidth()-1, this.getHeight());
 		Font font = new Font("Courier", Font.BOLD, 20);
@@ -36,7 +36,7 @@ public class SideMenu extends JPanel{
 	    g.drawString("Nourritures:"+GameManager.nbNourritures(),25, 250);
 	    g.drawString("Viandes :"+GameManager.nbViandes(),50, 300);
 	    g.drawString("Herbes :"+GameManager.nbHerbes(),60, 350);    
-	}
+	}*/
 	
 	
 }

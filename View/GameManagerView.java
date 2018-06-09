@@ -41,7 +41,7 @@ public class GameManagerView extends JPanel{
         return (int)(y*getCoefficientY());
     }
     
-	public void paintComponent(Graphics g) {		
+	/*public void paintComponent(Graphics g) {
 		g.setColor(new Color(0,200,0));
 		g.fillRect(0,0,getWidth(),getHeight());
     	for (Drone d : GameManager.getPlateau().getCases()) {
@@ -79,7 +79,7 @@ public class GameManagerView extends JPanel{
 	}
 	public int getHauteur() {
 		return getHeight();
-	}
+	}*/
 
 	
 	

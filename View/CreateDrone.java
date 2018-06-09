@@ -35,7 +35,7 @@ public class CreateDrone extends JDialog implements ActionListener{
 	private JCheckBox terre,eau,air;
 	private SpinnerNumberModel taille,poids,vitMax,nbPattes,rouge,vert,bleu;
 	  
-	public CreateDrone(JFrame parent, String title, boolean modal){
+	/*public CreateDrone(JFrame parent, String title, boolean modal){
 
 	    super(parent, title, modal);
 	    setSize(600, 400);
@@ -241,7 +241,7 @@ public class CreateDrone extends JDialog implements ActionListener{
 	  
 	}
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	*/public void actionPerformed(ActionEvent arg0) {
 
 		if(arg0.getSource() == annuler)
 		{
@@ -261,8 +261,7 @@ public class CreateDrone extends JDialog implements ActionListener{
 			boolean terrestre = terre.isSelected();
 			boolean aquatique = eau.isSelected();
 			boolean aerien = air.isSelected();
-			GameManager.creationAnimal(nom,carnivore,periode,terrestre,aquatique,aerien,
-					nbP,p,t,vM,r,v,b);
+			//GameManager.creationAnimal(nom,carnivore,periode,terrestre,aquatique,aerien,nbP,p,t,vM,r,v,b);
 			this.setVisible(false);
 		}
 		

@@ -15,9 +15,9 @@ public class BottomMenu extends JPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private AddItem pan1;
 	private AddPackage pan2;
-	private Button bout = new Button ("Créer Animal");
+	private Button bout = new Button ("Crï¿½er Animal");
 	
-	public BottomMenu()
+	/*public BottomMenu()
 	{
 		setPreferredSize(new Dimension(1200, 100));
 		bout.setPreferredSize(new Dimension(400,200));
@@ -32,10 +32,10 @@ public class BottomMenu extends JPanel implements ActionListener{
 		bout.addActionListener(this);
 	}
 
-	@Override
+	*/@Override
 	public void actionPerformed(ActionEvent arg0) {
 		
-		new CreateDrone(null,"Création d'un animal",true);			
+		//new CreateDrone(null,"Creation d'un animal",true);
 		
 	}
 }

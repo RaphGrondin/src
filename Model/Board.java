@@ -2,14 +2,14 @@ package Model;
 
 import java.util.ArrayList;
 
-public class Board extends GameObject{
+public class Board extends Element{
     private static ArrayList<Case> cases;
 
     public Board() {
         cases = new ArrayList<Case>();
 
-        int width = GameManager.getLargeur();
-        int height = GameManager.getHauteur();
+        int width = GameManager.getWidth();
+        int height = GameManager.getHeight();
         int nbX = 12;
         int nbY = 6;
         for (int x=0; x<nbX; x++) {

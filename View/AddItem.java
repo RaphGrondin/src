@@ -20,7 +20,7 @@ public class AddItem extends JPanel implements ActionListener{
 	private Button herbivore = new Button("Herbivore"); 
 	private JLabel text = new JLabel("Ajouter");
 	
-	public AddItem()
+	/*public AddItem()
 	{
 		setBackground(Color.black);
 		setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.white));
@@ -38,10 +38,10 @@ public class AddItem extends JPanel implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	*/public void actionPerformed(ActionEvent arg0) {
 			
 			
-			 if(arg0.getSource() == herbivore){	 
+			 /*if(arg0.getSource() == herbivore){
 				 if (GameManager.nbHerbivores() < 25) {
 					 GameManager.ajoutHerbivore();
 				 }
@@ -50,7 +50,7 @@ public class AddItem extends JPanel implements ActionListener{
 				 if (GameManager.nbCarnivores() < 25) {
 					 GameManager.ajoutCarnivore();
 				 }			 
-			 }
+			 }*/
 			 
 	}
 	

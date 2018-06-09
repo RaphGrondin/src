@@ -10,8 +10,8 @@ public abstract class Element {
 	public Element() {
 		Random rnd = new Random();
 
-		int x = rnd.nextInt(GameManager.getLargeur());
-		int y = rnd.nextInt(GameManager.getHauteur());
+		int x = rnd.nextInt(GameManager.getWidth());
+		int y = rnd.nextInt(GameManager.getHeight());
 
 		this.name = "NULL";
 		this.size = 0;

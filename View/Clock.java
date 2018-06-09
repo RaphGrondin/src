@@ -27,7 +27,7 @@ public class Clock extends JPanel	{
 	    Font font = new Font("Courier", Font.BOLD, 20);
 	    g.setFont(font);
 	    g.setColor(Color.white);  
-	    g.drawString(GameManager.getTemps().getH()+":"+(int)GameManager.getTemps().getM(),75, 20);
+	    g.drawString(GameManager.getTime().getH()+":"+(int)GameManager.getTime().getM(),75, 20);
 	  
 	  }
 }
