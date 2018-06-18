@@ -4,11 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-import Model.Drone;
+import Model.*;
 import Model.Package;
-import Model.GameManager;
-import Model.Item;
-import Model.Station;
 
 @SuppressWarnings("serial")
 public class GameManagerView extends JPanel{
@@ -41,36 +38,28 @@ public class GameManagerView extends JPanel{
         return (int)(y*getCoefficientY());
     }
     
-	/*public void paintComponent(Graphics g) {
-		g.setColor(new Color(0,200,0));
+	public void paintComponent(Graphics g) {
+		g.setColor(new Color(0,0,0));
 		g.fillRect(0,0,getWidth(),getHeight());
-    	for (Drone d : GameManager.getPlateau().getCases()) {
-        	if (c.isAquatique()){ 
-        		g.setColor(new Color(176,224,230));
-        	} else {
-        		g.setColor(new Color(208,192,122));
-        	} 
-        	
-    	    g.fillRect(ratioX(c.getPosition().getX()), ratioY(c.getPosition().getY()), ratioX(c.getLargeur()), ratioY(c.getHauteur()));
-    	    g.setColor(new Color(0,0,0));
-    	    g.drawRect(ratioX(c.getPosition().getX()), ratioY(c.getPosition().getY()), ratioX(c.getLargeur()), ratioY(c.getHauteur())); 
+		int ii = 0;
+    	for (Case c : GameManager.getBoard().getCases()) {
+    		//System.out.println("Cases : " + ii);
+    		ii++;
+    	    g.fillRect(ratioX(c.getX()), ratioY(c.getY()), ratioX(c.getWidth()), ratioY(c.getHeight()));
+    	    g.setColor(new Color(0,0,255));
+    	    g.drawRect(ratioX(c.getX()), ratioY(c.getY()), ratioX(c.getWidth()), ratioY(c.getHeight()));
     	} 
 		
-		for (int i=0; i<GameManager.getAnimaux().size();i++){
-			Animal ai = GameManager.getAnimaux().get(i);
-			
-			g.setColor(ai.getCouleur());
-		    g.fillOval(ratioX(ai.getPosition().getX()),ratioY(ai.getPosition().getY()), ratioX(ai.getCaracVitale().getTaille()), ratioY(ai.getCaracVitale().getTaille()));    	
+		for (int i=0; i<GameManager.getDrones().size();i++){
+			Drone d = GameManager.getDrones().get(i);
+			g.setColor(new Color (255,0,0));
+		    g.fillOval(ratioX(d.getX()),ratioY(d.getY()), ratioX(d.getSize()), ratioY(d.getSize()));
     	}
     	    	
-    	for (int i=0;i<GameManager.getNourritures().size();i++) {
-    		Nourriture n = GameManager.getNourritures().get(i);
-        	if (n.isPlante()) {
-        		g.setColor(Color.green);
-        	} else {
-        		g.setColor(Color.red);
-        	}
-        	g.fillRect(ratioX(n.getPosition().getX()-10), ratioY(n.getPosition().getY()-10), ratioX(20), ratioY(20));
+    	for (int i=0;i<GameManager.getPackages().size();i++) {
+    		Package p = GameManager.getPackages().get(i);
+    		g.setColor(new Color(0,255,0));
+        	g.fillRect(ratioX(p.getX()-10), ratioY(p.getY()-10), ratioX(20), ratioY(20));
     	}
 	}
 
@@ -79,9 +68,6 @@ public class GameManagerView extends JPanel{
 	}
 	public int getHauteur() {
 		return getHeight();
-	}*/
-
-	
-	
+	}
 
 }
