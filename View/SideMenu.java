@@ -23,43 +23,39 @@ public class SideMenu extends JPanel{
 		setPreferredSize(new Dimension(200, 600));
 	    H=new Clock();
 		setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.white));
-		JButton bouton = new JButton();
-		String[] names;
-		ArrayList<String> dronesNames = gm.getDronesName();
+		JButton bouton = new JButton("Supprimer");
+		JLabel text = new JLabel("Selectionner un drone a supprimer");
+		Font police = new Font("Courier", Font.BOLD,10);
+		text.setFont(police);
+		text.setForeground(Color.white);
+		text.setHorizontalAlignment(JLabel.CENTER);
+		/*ArrayList<String> dronesNames = gm.getDronesName();
 		if (dronesNames == null) {
 			 names = new String[1];
 			 names[1] = "Aucun element";
 		} else {
 			names = new String[dronesNames.size()];
 			names = dronesNames.toArray(names);
-		}
-
+		}*/
+		String[] names = {"one"};
 		JComboBox<String> myList = new JComboBox<>(names);
 		add(H);
+		add(text);
 		add(myList);
 		add(bouton);
 	}
 	
 	public void paintComponent(Graphics g){
 		g.setColor(Color.black);
-		g.fillRect(0, 0, this.getWidth()-1, this.getHeight());
+		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		Font font = new Font("Courier", Font.BOLD, 20);
 	    g.setFont(font);
 	    g.setColor(Color.white);
 
-
-		/*ListModel<String> model = myList.getModel();
-		for(int i = 0; i < model.getSize(); i++) {
-			System.out.println(model.getElementAt(i));
-		}*/
-
-		//g.drawString("Carnivores :"+GameManager.nbCarnivores(),25, 150);
-	    /*g.drawString("Animaux :"+GameManager.nbAnimaux(),50, 100);
-	    g.drawString("Carnivores :"+GameManager.nbCarnivores(),25, 150);
-	    g.drawString("Herbivores :"+GameManager.nbHerbivores(),25, 200);
-	    g.drawString("Nourritures:"+GameManager.nbNourritures(),25, 250);
-	    g.drawString("Viandes :"+GameManager.nbViandes(),50, 300);
-	    g.drawString("Herbes :"+GameManager.nbHerbes(),60, 350);*/
+		g.drawString("Drones :"+GameManager.nbDrones(),25, 105);
+	    g.drawString("Packages :"+GameManager.nbPackages(),25, 150);
+	    g.drawString("Stations :"+GameManager.nbStations(),25, 200);
+	    g.drawString("Items :"+GameManager.nbItems(),25, 250);
 	}
 	
 	

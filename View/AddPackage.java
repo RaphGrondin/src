@@ -16,11 +16,11 @@ import Model.GameManager;
 public class AddPackage extends JPanel implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
-	private Button viande = new Button("Viande"); 
-	private Button herbe = new Button("Herbe"); 
-	private JLabel text = new JLabel("Ajouter");
+	private Button littlePackage = new Button("Little Package");
+	private Button bigPackage = new Button("Big Package");
+	private JLabel text = new JLabel("Add package");
 	
-	/*public AddPackage()
+	public AddPackage()
 	{
 		setBackground(Color.black);
 		setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.white));
@@ -31,12 +31,12 @@ public class AddPackage extends JPanel implements ActionListener{
 		text.setHorizontalAlignment(JLabel.CENTER);
 		setLayout(new BorderLayout());		
 		add(text, BorderLayout.CENTER);
-		add(viande, BorderLayout.NORTH);
-		add(herbe, BorderLayout.SOUTH);
-		viande.addActionListener(this);
-		herbe.addActionListener(this);
+		add(littlePackage, BorderLayout.NORTH);
+		add(bigPackage, BorderLayout.SOUTH);
+		littlePackage.addActionListener(this);
+		bigPackage.addActionListener(this);
 	    
-	}*/
+	}
 	public void actionPerformed(ActionEvent arg0) {
 		
 		

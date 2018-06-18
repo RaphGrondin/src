@@ -11,16 +11,16 @@ public class GameManager{
     private static ArrayList<Station> stations;
     private static Time time;
     private static Board board;
-    private static int width = 1165;
-    private static int height = 615;
+    private static int width = 1325;
+    private static int height = 710;
 
     public GameManager() {
         board = new Board();
         time = new Time();
-        packages = new ArrayList<Package>();
-        drones = new ArrayList<Drone>();
-        items = new ArrayList<Item>();
-        stations = new ArrayList<Station>();
+        packages = new ArrayList<>();
+        drones = new ArrayList<>();
+        items = new ArrayList<>();
+        stations = new ArrayList<>();
     }
 
     public static ArrayList<Package> getPackages() {
@@ -82,9 +82,9 @@ public class GameManager{
     public void go(){
         for(;;){
             getTime().setTmp();
-            if (getTime().getM()==0 && nbItems() < 20) {
+            /*if (getTime().getM()==0 && nbItems() < 20) {
                 addItem();
-            }
+            }*/
             /*for (int i=0; i<animaux.size();i++) {
                 //Case c = p.getCase(animaux.get(i).position.getX(), animaux.get(i).position.getY());
                 animaux.get(i).run(animaux, nourritures, t, p.getCases());
