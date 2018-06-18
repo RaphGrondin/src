@@ -6,7 +6,7 @@ import javax.swing.*;
 public class MainWindow extends JFrame{
     public MainWindow() {
     	JFrame.setDefaultLookAndFeelDecorated(true);
-        this.setTitle("Vivarium");
+        this.setTitle("Drone simulation");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setResizable(true);
         this.setLocationRelativeTo(null);

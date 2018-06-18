@@ -1,5 +1,7 @@
 package View;
 
+import Model.GameManager;
+
 import java.awt.*;
 import javax.swing.JPanel;
 
@@ -25,12 +27,12 @@ public class ViewPlateau extends JPanel{
 	}
 	
 	public void go() {
-		/*
-		int x = getWidth();
+
+		/*int x = getWidth();
 		int y = getHeight();
 		
-		float XCoefficient = (float)x/GameManager.getLargeur();
-		float YCoefficient = (float)y/GameManager.getHauteur();
+		float XCoefficient = (float)x/ GameManager.getWidth();
+		float YCoefficient = (float)y/GameManager.getHeight();
 		
 		//GameManagerView.setCoefficientX(XCoefficient);
 		//GameManagerView.setCoefficientY(YCoefficient);
@@ -42,8 +44,8 @@ public class ViewPlateau extends JPanel{
             coefficient = YCoefficient;
 		
 		GameManagerView.setCoefficientX(coefficient);
-		GameManagerView.setCoefficientY(coefficient);
-		*/
+		GameManagerView.setCoefficientY(coefficient);*/
+
 		
 		for(;;){
 			

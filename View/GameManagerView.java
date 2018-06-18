@@ -39,14 +39,12 @@ public class GameManagerView extends JPanel{
     }
     
 	public void paintComponent(Graphics g) {
-		g.setColor(new Color(0,0,0));
+		g.setColor(new Color(255,255,255));
 		g.fillRect(0,0,getWidth(),getHeight());
-		int ii = 0;
     	for (Case c : GameManager.getBoard().getCases()) {
-    		//System.out.println("Cases : " + ii);
-    		ii++;
-    	    g.fillRect(ratioX(c.getX()), ratioY(c.getY()), ratioX(c.getWidth()), ratioY(c.getHeight()));
-    	    g.setColor(new Color(0,0,255));
+			g.setColor(new Color(255,255,255));
+			g.fillRect(ratioX(c.getX()), ratioY(c.getY()), ratioX(c.getWidth()), ratioY(c.getHeight()));
+			g.setColor(new Color(0,0,0));
     	    g.drawRect(ratioX(c.getX()), ratioY(c.getY()), ratioX(c.getWidth()), ratioY(c.getHeight()));
     	} 
 		

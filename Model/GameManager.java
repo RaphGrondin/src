@@ -58,6 +58,14 @@ public class GameManager{
         stations.add(s);
     }
 
+    public ArrayList<String> getDronesName() {
+        ArrayList<String> res = new ArrayList<>();
+        for (int i = 0; i<drones.size(); i++) {
+            res.add(drones.get(i).getName());
+        }
+        return res;
+    }
+
     public static int nbPackages(){
         return packages.size();
     }

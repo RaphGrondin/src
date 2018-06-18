@@ -20,7 +20,7 @@ public class AddItem extends JPanel implements ActionListener{
 	private Button herbivore = new Button("Herbivore"); 
 	private JLabel text = new JLabel("Ajouter");
 	
-	/*public AddItem()
+	public AddItem()
 	{
 		setBackground(Color.black);
 		setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.white));
@@ -38,7 +38,7 @@ public class AddItem extends JPanel implements ActionListener{
 	}
 
 	@Override
-	*/public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent arg0) {
 			
 			
 			 /*if(arg0.getSource() == herbivore){
