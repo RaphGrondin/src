@@ -130,7 +130,7 @@ public class GameManager{
     }
 
     public static void addStation() {
-        Station s = new Station();
+        Station s = new Station(2,5);
         stations.add(s);
     }
 

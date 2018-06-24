@@ -14,7 +14,7 @@ public class Drone extends Element {
 		super(name);
 		this.setSize(size);
 		try {
-			image = ImageIO.read(new File("src/Model/_img/drone/albatross.png"));
+			image = ImageIO.read(new File("src/Model/_img/drone/drone.png"));
 		} catch (IOException e) {}
 
 		this.fuel = 100;
@@ -24,7 +24,7 @@ public class Drone extends Element {
 	public Drone(float x, float y, String name, int size, float fuel, int score) {
 		super(x,y,name,size);
 		try {
-			image = ImageIO.read(new File("src/Model/_img/drone/albatross.png"));
+			image = ImageIO.read(new File("src/Model/_img/drone/drone.png"));
 		} catch (IOException e) {}
 		this.fuel = fuel;
 		this.score = score;

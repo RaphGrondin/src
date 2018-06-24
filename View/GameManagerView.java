@@ -60,6 +60,13 @@ public class GameManagerView extends JPanel{
     		g.setColor(new Color(0,255,0));
         	g.fillRect(ratioX(p.getX()-10), ratioY(p.getY()-10), ratioX(20), ratioY(20));
     	}
+
+		for (int i=0; i<GameManager.getStations().size();i++){
+			Station s = GameManager.getStations().get(i);
+			//g.setColor(new Color (255,0,0));
+			//g.fillOval(ratioX(d.getX()),ratioY(d.getY()), ratioX(d.getSize()), ratioY(d.getSize()));
+			g.drawImage(s.getImage(),(int)ratioX(s.getX()),(int)ratioY(s.getY()),(int)s.getSize(), (int)s.getSize(),this);
+		}
 	}
 
 	public int getLargeur() {

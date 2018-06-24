@@ -1,7 +1,6 @@
 package Model;
 
 public class BigPackage extends Package{
-
     public BigPackage(String name) {
         super(name, 20);
         this.setValue(100);

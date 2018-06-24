@@ -45,13 +45,7 @@ public class AddStation extends JPanel implements ActionListener{
 
 
         if(arg0.getSource() == station){
-                GameManager.addStation();
-            }
-
-        } else {
-            if (GameManager.nbDrones() < 25) {
-                GameManager.addBigDrone();
-            }
+            GameManager.addStation();
         }
 
     }

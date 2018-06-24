@@ -1,7 +1,6 @@
 package Model;
 
 public class BigDrone extends Drone{
-
 	public BigDrone(String name) {
 		super(name,100);
 	}
