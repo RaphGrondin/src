@@ -17,14 +17,15 @@ import javax.swing.JPanel;
 
 import Model.GameManager;
 
-public class AddStation extends JPanel implements ActionListener{
+public class AddDrone extends JPanel implements ActionListener{
 
     private static final long serialVersionUID = 1L;
-    private Button station = new Button("Station");
-    private JLabel text = new JLabel("Add station");
+    private Button littleDrone = new Button("Little Drone");
+    private Button bigDrone = new Button("Big Drone");
+    private JLabel text = new JLabel("Add drone");
 
 
-    public AddStation()
+    public AddDrone()
     {
         setBackground(Color.black);
         setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.white));
@@ -36,16 +37,27 @@ public class AddStation extends JPanel implements ActionListener{
         text.setHorizontalAlignment(JLabel.CENTER);
         setLayout(new BorderLayout());
         add(text, BorderLayout.CENTER);
-        add(station, BorderLayout.NORTH);
-        station.addActionListener(this);
+        add(littleDrone, BorderLayout.NORTH);
+        add(bigDrone, BorderLayout.SOUTH);
+        littleDrone.addActionListener(this);
+        bigDrone.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        if(arg0.getSource() == station){
-            if (GameManager.nbStations() < 5) {
-                GameManager.addStation();
+
+
+        if(arg0.getSource() == littleDrone){
+            if (GameManager.nbDrones() < 25) {
+                GameManager.addLittleDrone();
+            }
+
+        } else {
+            if (GameManager.nbDrones() < 25) {
+                GameManager.addBigDrone();
             }
         }
+
     }
+
 }

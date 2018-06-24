@@ -50,22 +50,18 @@ public class GameManagerView extends JPanel{
 		
 		for (int i=0; i<GameManager.getDrones().size();i++){
 			Drone d = GameManager.getDrones().get(i);
-			//g.setColor(new Color (255,0,0));
-		    //g.fillOval(ratioX(d.getX()),ratioY(d.getY()), ratioX(d.getSize()), ratioY(d.getSize()));
 		    g.drawImage(d.getImage(),(int)ratioX(d.getX()),(int)ratioY(d.getY()),(int)d.getSize(), (int)d.getSize(),this);
     	}
     	    	
     	for (int i=0;i<GameManager.getPackages().size();i++) {
     		Package p = GameManager.getPackages().get(i);
     		g.setColor(new Color(0,255,0));
-        	g.fillRect(ratioX(p.getX()-10), ratioY(p.getY()-10), ratioX(20), ratioY(20));
+			g.drawImage(p.getImage(),(int)ratioX(p.getX()),(int)ratioY(p.getY()),(int)p.getSize(), (int)p.getSize(),this);
     	}
 
 		for (int i=0; i<GameManager.getStations().size();i++){
 			Station s = GameManager.getStations().get(i);
-			//g.setColor(new Color (255,0,0));
-			//g.fillOval(ratioX(d.getX()),ratioY(d.getY()), ratioX(d.getSize()), ratioY(d.getSize()));
-			g.drawImage(s.getImage(),(int)ratioX(s.getX()),(int)ratioY(s.getY()),(int)s.getSize(), (int)s.getSize(),this);
+			g.drawImage(s.getImage(),(int)ratioX(s.getX()),(int)ratioY(s.getY()),100, 100,this);
 		}
 	}
 

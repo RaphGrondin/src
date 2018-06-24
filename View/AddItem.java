@@ -6,11 +6,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,9 +15,8 @@ import Model.GameManager;
 public class AddItem extends JPanel implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
-	private Button littleDrone = new Button("Little Drone");
-	private Button bigDrone = new Button("Big Drone");
-	private JLabel text = new JLabel("Add drone");
+	private Button item = new Button("Item");
+	private JLabel text = new JLabel("Add item");
 
 	
 	public AddItem()
@@ -37,27 +31,19 @@ public class AddItem extends JPanel implements ActionListener{
 		text.setHorizontalAlignment(JLabel.CENTER);
 		setLayout(new BorderLayout());		
 		add(text, BorderLayout.CENTER);
-		add(littleDrone, BorderLayout.NORTH);
-		add(bigDrone, BorderLayout.SOUTH);
-		littleDrone.addActionListener(this);
-		bigDrone.addActionListener(this);
+		add(item, BorderLayout.NORTH);
+		item.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 			
 			
-			 if(arg0.getSource() == littleDrone){
-				 if (GameManager.nbDrones() < 25) {
-					 GameManager.addLittleDrone();
+			 if(arg0.getSource() == item) {
+				 if (GameManager.nbItems() < 25) {
+					 GameManager.addItem();
 				 }
-				 
-			 } else {
-				 if (GameManager.nbDrones() < 25) {
-					 GameManager.addBigDrone();
-				 }			 
 			 }
-			 
 	}
 	
 }

@@ -1,11 +1,17 @@
 package Model;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.Buffer;
 import java.util.Random;
 
 public abstract class Element {
 	protected Vec position;
 	protected String name;
 	protected int size;
+	protected BufferedImage image;
 	
 	public Element() {
 		Random rnd = new Random();
@@ -13,6 +19,7 @@ public abstract class Element {
 		int x = rnd.nextInt(GameManager.getWidth());
 		int y = rnd.nextInt(GameManager.getHeight());
 
+		this.image = null;
 		this.name = "NULL";
 		this.size = 0;
 		this.position = new Vec(x,y);
@@ -65,5 +72,15 @@ public abstract class Element {
 	
 	public void setSize(int size) {
 		this.size = size;
+	}
+
+	public BufferedImage getImage() {
+		return this.image;
+	}
+
+	public void setImage(String path) {
+		try {
+			image = ImageIO.read(new File(path));
+		} catch (IOException e) {}
 	}
 }

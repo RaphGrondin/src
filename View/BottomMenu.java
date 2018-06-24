@@ -14,7 +14,7 @@ public class BottomMenu extends JPanel implements ActionListener{
 	
 	
 	private static final long serialVersionUID = 1L;
-	private AddItem pan1;
+	private AddDrone pan1;
 	private AddPackage pan2;
 	private AddItem pan3;
 	private AddStation pan4;
@@ -26,7 +26,7 @@ public class BottomMenu extends JPanel implements ActionListener{
 		setPreferredSize(new Dimension(1200, 100));
 		bout.setPreferredSize(new Dimension(400,200));
 		tab = new JTabbedPane();
-		pan1 =new AddItem();
+		pan1 =new AddDrone();
 		pan2 =new AddPackage();
 		pan3 = new AddItem();
 		pan4 = new AddStation();
@@ -36,6 +36,7 @@ public class BottomMenu extends JPanel implements ActionListener{
 
 		tab.addTab("Add drone", pan1);
 		tab.addTab("Add package", pan2);
+		tab.addTab("Add item", pan3);
 		tab.addTab("Add station", pan4);
 		add(tab,BorderLayout.CENTER);
 		add(bout,BorderLayout.EAST);

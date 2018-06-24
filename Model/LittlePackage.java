@@ -3,7 +3,7 @@ package Model;
 public class LittlePackage extends Package{
 
 	public LittlePackage(String name) {
-		super(name, 10);
+		super(name, 50);
 		this.setValue(50);
 	}
 
