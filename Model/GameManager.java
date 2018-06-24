@@ -129,6 +129,11 @@ public class GameManager{
         drones.add(d);
     }
 
+    public static void addStation() {
+        Station s = new Station();
+        stations.add(s);
+    }
+
     public static void createDrone (String name, int size)
     {
         Drone d;

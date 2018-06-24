@@ -28,6 +28,7 @@ public class BottomMenu extends JPanel implements ActionListener{
 		pan1 =new AddItem();
 		pan2 =new AddPackage();
 		pan3 = new AddItem();
+		pan4= new AddStation();
 	    setBackground(Color.black);
 		setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.white));
 		setLayout(new BorderLayout());
