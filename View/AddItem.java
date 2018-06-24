@@ -40,7 +40,7 @@ public class AddItem extends JPanel implements ActionListener{
 			
 			
 			 if(arg0.getSource() == item) {
-				 if (GameManager.nbItems() < 25) {
+				 if (GameManager.nbItems() < 10) {
 					 GameManager.addItem();
 				 }
 			 }

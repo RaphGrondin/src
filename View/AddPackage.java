@@ -38,13 +38,18 @@ public class AddPackage extends JPanel implements ActionListener{
 	    
 	}
 	public void actionPerformed(ActionEvent arg0) {
-		
-		
-		 /*if(arg0.getSource() == herbe)
-		 {	 
 
-			 GameManager.ajoutHerbe();
-		 }else GameManager.ajoutViande();*/
+
+		if(arg0.getSource() == littlePackage){
+			if (GameManager.nbPackages() < 10) {
+				GameManager.addLittlePackage();
+			}
+
+		} else {
+			if (GameManager.nbPackages() < 10) {
+				GameManager.addBigPackage();
+			}
+		}
 		 
 }
 }

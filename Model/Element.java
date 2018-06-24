@@ -9,6 +9,8 @@ import java.util.Random;
 
 public abstract class Element {
 	protected Vec position;
+	protected Vec acceleration;
+	protected Vec speed;
 	protected String name;
 	protected int size;
 	protected BufferedImage image;
@@ -31,12 +33,14 @@ public abstract class Element {
 	}
 
 	public Element(double x, double y, String name, int size) {
+		this();
 		this.position = new Vec(x,y);
 		this.name = name;
 		this.size = size;
 	}
 
 	public Element (double x, double y) {
+		this();
 		this.position = new Vec(x,y);
 		this.name = "Null";
 		this.size = 0;
@@ -83,4 +87,21 @@ public abstract class Element {
 			image = ImageIO.read(new File(path));
 		} catch (IOException e) {}
 	}
+
+	public Vec getAcceleration() {
+		return acceleration;
+	}
+
+	public void setAcceleration(Vec acceleration) {
+		this.acceleration = acceleration;
+	}
+
+	public Vec getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(Vec speed) {
+		this.speed = speed;
+	}
+
 }
