@@ -94,7 +94,7 @@ public class GameManager{
                 addItem();
             }*/
             for(Drone drone : drones){
-
+                drone.move();
             }
             /*for (int i=0; i<animaux.size();i++) {
                 //Case c = p.getCase(animaux.get(i).position.getX(), animaux.get(i).position.getY());
