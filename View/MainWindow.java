@@ -4,7 +4,7 @@ import java.awt.Frame;
 
 import javax.swing.*;
 
-/**
+/** Implements the Main Window of the Application in which the Panels will be displayed.
  *
  * @author Pierrick GRAF
  * @author Raphaël GRONDIN
@@ -12,8 +12,8 @@ import javax.swing.*;
 public class MainWindow extends JFrame{
     private static final long serialVersionUID = 1L;
 
-    /**
-     *
+    /** Constructor of MainWindow. Creates the main window of the application, which contains
+     * the ViewPlateau.
      */
     public MainWindow() {
         JFrame.setDefaultLookAndFeelDecorated(true);
@@ -22,8 +22,6 @@ public class MainWindow extends JFrame{
         this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        //this.setBackground(Color.black);
-
         ViewPlateau f = new ViewPlateau();
         this.setContentPane(f);
 

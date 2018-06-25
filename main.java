@@ -1,17 +1,14 @@
 import Model.GameManager;
 import View.*;
 
-/**
+/** Main Class.
  *
- * @author Pierrick
- *
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  */
+@SuppressWarnings("all")
 public class main {
 
-    /**
-     *
-     * @param args
-     */
     public static void main(String[] args) {
         // LANCEMENT DU MODELE
         GameManager gm = new GameManager();
