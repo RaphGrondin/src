@@ -9,7 +9,7 @@ public class Station extends Element{
 	private int droneCapacity;
 	private int packageCapacity;
 
-	/** Constructor of the Station which creates an Element of type Station.
+	/** Constructor of the Station which creates a station Element.
 	 *
 	 * @param droneCapacity capacity of drones the station can contain simultaneously.
 	 * @param packageCapacity capacity of packages the station can contain simultaneously.
