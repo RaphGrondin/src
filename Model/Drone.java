@@ -1,92 +1,86 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 public class Drone extends Element {
-	private float fuel;
-	private int score;
-	private Package pck;
+    private float fuel;
+    private int score;
+    private Package pck;
+    private HashMap<Station, Vec> distanceStation;
 
-	public Drone(String name, int size) {
-		super(name);
-		this.setSize(size);
-		Random rnd = new Random();
-		int x = rnd.nextInt(GameManager.getWidth()-(int)getSize());
-		int y = rnd.nextInt(GameManager.getHeight()-(int)getSize());
-		this.setX(x+getSize()/2);
-		this.setY(y+getSize()/2);
-		this.setImage("src/Model/_img/drone/drone.png");
-		this.fuel = 100;
-		this.score = 0;
-	}
+    public Drone(String name, int size) {
+        super(name);
+        this.setSize(size);
+        Random rnd = new Random();
+        int x = rnd.nextInt(GameManager.getWidth() - (int) getSize());
+        int y = rnd.nextInt(GameManager.getHeight() - (int) getSize());
+        this.setX(x + getSize() / 2);
+        this.setY(y + getSize() / 2);
+        this.setImage("src/Model/_img/drone/drone.png");
+        this.fuel = 20;
+        this.score = 0;
+        this.distanceStation = new HashMap<>();
+    }
 
-	public Drone(float x, float y, String name, int size, float fuel, int score) {
-		super(x,y,name,size);
-		this.setImage("src/Model/_img/drone/drone.png");
-		this.fuel = fuel;
-		this.score = score;
-	}
-	
-	public int getScore() {
-		return this.score;
-	}
-	
-	public void setScore(int score){
-		this.score = score;
-	}
-	
-	public float getFuel() {
-		return this.fuel;
-	}
-	
-	public void setFuel(float fuel) {
-		this.fuel = fuel;
-	}
+    public Drone(float x, float y, String name, int size, float fuel, int score) {
+        super(x, y, name, size);
+        this.setImage("src/Model/_img/drone/drone.png");
+        this.fuel = fuel;
+        this.score = score;
+        this.distanceStation = new HashMap<>();
+    }
 
-	/*public void move()
-	{
-		if(getFuel() == 0) {
-			crash();
-		} else {
-			shift(GameManager.getPackages());
-		}
-			if(caracVitale.getAppetit() >= 60 && regime==RegimeAlimentaire.Carnivore)
-			{
+    public int getScore() {
+        return this.score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public float getFuel() {
+        return this.fuel;
+    }
+
+    public void setFuel(float fuel) {
+        this.fuel = fuel;
+    }
+
+    public void move() {
+        if (getFuel() == 0) {
+            crash();
+        } else {
+            if (getFuel() <= 30) {
+                findStation();
+            } else {
+
+            }
+        }
+
+    }
+
+    public void crash() {
+
+        if (pck != null) {
+            GameManager.getPackages().add(pck);
+        }
+        GameManager.getDrones().remove(this);
+
+    }
 
 
-			}
-			if(caracVitale.getAppetit() >=50)
-			{
-				manger(nourritures,animaux);
-			}
-			if (regime==RegimeAlimentaire.Herbivore)
-			{
-				fuir(animaux);
-			}
+    public void findStation() {
+        distanceStation.clear();
+        for (Station s : GameManager.getStations()) {
+            distanceStation.add(Math.sqrt(Math.pow(s.getX()-this.getX(),2)+Math.pow(s.getY()-this.getY(),2)));
+        }
+        System.out.println(distance.get(0));
+    }
 
-			cogner();
-
-		}else
-		{
-			dormir();
-			if (regime==RegimeAlimentaire.Herbivore && caracVitale.getFatigue()<=20)
-			{
-				fuir(animaux);
-				rester();
-				cogner();
-
-			}
-		}
-
-		updatePos(cases);
-		if(T.getM()==0) {
-			updateEtat(animaux,nourritures);
-		}
-	}
-
-	private void updatePos(List<Case> cases)
+	/*private void updatePos(List<Case> cases)
 	{
 
 		vitesse.add(acceleration);
@@ -96,9 +90,9 @@ public class Drone extends Element {
 		position.add(vitesse);
 
 
-	}
+	}*/
 
-	void updateEtat(List<Animal> animaux,List<Nourriture> nourritures)
+	/*public void updateEtat(List<Animal> animaux,List<Nourriture> nourritures)
 
 	{
 		if(vitesse.mag()==0)
@@ -133,9 +127,9 @@ public class Drone extends Element {
 			reveil();
 		}
 
-	}
+	}*/
 
-	public void wakeup()
+	/*public void wakeup()
 	{
 
 		Random rnd1= new Random();
@@ -149,16 +143,16 @@ public class Drone extends Element {
 
 		vitesse = new Vec (Vx,Vy);
 		acceleration = new Vec (Accx,Accy);
-	}
+	}*/
 
-	public void dormir()
+	/*public void dormir()
 	{
 		vitesse.mult(0);
 		acceleration.mult(0);
 
-	}
+	}*/
 
-	public void mourrir(List<Nourriture> nourritures,List<Animal> animaux)
+	/*public void mourrir(List<Nourriture> nourritures,List<Animal> animaux)
 	{
 		if(this.getPosition().getX() < GameManager.getLargeur() || this.getPosition().getX() > 0 || this.getPosition().getY() > 0 || this.getPosition().getY() < GameManager.getHauteur())
 		{
@@ -166,7 +160,7 @@ public class Drone extends Element {
 			nourritures.add(n);
 			animaux.remove(this);
 		}
-	}
+	}*/
 
 	/*public void manger(List<Nourriture> nourritures, List <Animal> animaux)
 	{
@@ -258,63 +252,9 @@ public class Drone extends Element {
 				v.mult(0.5);
 				acceleration.add(v);
 			}
-	}
-
-	public void crash()
-	{
-
-		if (pck != null) {
-			GameManager.getPackages().add(pck);
-		}
-		GameManager.getDrones().remove(this);
-		/*if (getX() > GameManager.getWidth()-(50+getSize()) )
-		{
-			double start1 = -2;
-			double end1 = -1;
-			double start2 = 0;
-			double end2 = 1;
-			double random = new Random().nextDouble();
-			double result1 = start1 + (random * (end1 - start1));
-			double result2 = start2 + (random * (end2 - start2));
-			acceleration= new Vec(result1,result2);
-
-		}else if (getY() > GameManager.getWidth()-(50+getSize()) )
-		{
-			double start1 = 0;
-			double end1 = 1;
-			double start2 = -2;
-			double end2 = -1;
-			double random = new Random().nextDouble();
-			double result1 = start1 + (random * (end1 - start1));
-			double result2 = start2 + (random * (end2 - start2));
-			acceleration= new Vec(result1,result2);
-
-		}else if (getX() < 50)
-		{
-			double start1 = 1;
-			double end1 = 2;
-			double start2 = 0;
-			double end2 = 1;
-			double random = new Random().nextDouble();
-			double result1 = start1 + (random * (end1 - start1));
-			double result2 = start2 + (random * (end2 - start2));
-			acceleration= new Vec(result1,result2);
-
-		}else if (getY() < 50)
-		{
-			double start1 = 0;
-			double end1 = 1;
-			double start2 = 1;
-			double end2 = 2;
-			double random = new Random().nextDouble();
-			double result1 = start1 + (random * (end1 - start1));
-			double result2 = start2 + (random * (end2 - start2));
-			acceleration= new Vec(result1,result2);
-
-		}*/
+	}*/
 
 
-	}
 
 	/*public void escape(List<Animal> animaux)
 	{
@@ -460,3 +400,4 @@ public class Drone extends Element {
 			}
 		} else vitesse.limit(caracVitale.getVitesseMax());
 	}*/
+}
