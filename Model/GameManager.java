@@ -154,6 +154,10 @@ public class GameManager{
         } else {
             drones.add(new BigDrone(name));
         }
+        updateList();
+    }
+
+    private static void updateList(){
         String[] names;
         if (nbDrones() == 0) {
             names = new String[1];
@@ -166,6 +170,15 @@ public class GameManager{
         }
         DefaultComboBoxModel model = new DefaultComboBoxModel(names);
         SideMenu.getMyList().setModel(model);
+    }
+
+    public static void removeDrone(String name){
+        for(int i = 0 ; i<nbDrones() ; i++){
+            if(drones.get(i).getName().equals(name)){
+                drones.remove(i);
+                updateList();
+            }
+        }
     }
 
     public void run(){
