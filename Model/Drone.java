@@ -152,48 +152,57 @@ public class Drone extends Element {
     }
 
 	private void updatePos() {
-		speed.add(acceleration);
+		//speed.add(acceleration);
 		position.add(speed);
+		stay();
 	}
 
     public void stay() {
 
         if (getX() > GameManager.getWidth()-(50+this.getSize())) {
-            double start1 = -2;
+            /*double start1 = -2;
             double end1 = -1;
             double start2 = 0;
             double end2 = 1;
             double random = new Random().nextDouble();
             double result1 = start1 + (random * (end1 - start1));
             double result2 = start2 + (random * (end2 - start2));
-            acceleration= new Vec(result1,result2);
+            acceleration= new Vec(result1,result2);*/
+            acceleration = new Vec(0,0);
+            position.setX(GameManager.getWidth()-(50+this.getSize()));
         } else if (getY() > GameManager.getHeight()-(50+this.getSize()) ) {
-            double start1 = 0;
+            /*double start1 = 0;
             double end1 = 1;
             double start2 = -2;
             double end2 = -1;
             double random = new Random().nextDouble();
             double result1 = start1 + (random * (end1 - start1));
             double result2 = start2 + (random * (end2 - start2));
-            acceleration= new Vec(result1,result2);
+            acceleration= new Vec(result1,result2);*/
+            acceleration = new Vec(0,0);
+            position.setY(GameManager.getWidth()-(50+this.getSize()));
         } else if (getX() < 50) {
-            double start1 = 1;
+            /*double start1 = 1;
             double end1 = 2;
             double start2 = 0;
             double end2 = 1;
             double random = new Random().nextDouble();
             double result1 = start1 + (random * (end1 - start1));
             double result2 = start2 + (random * (end2 - start2));
-            acceleration= new Vec(result1,result2);
+            acceleration= new Vec(result1,result2);*/
+            acceleration = new Vec(0,0);
+            position.setX(50);
         } else if (getY() < 50) {
-            double start1 = 0;
+            /*double start1 = 0;
             double end1 = 1;
             double start2 = 1;
             double end2 = 2;
             double random = new Random().nextDouble();
             double result1 = start1 + (random * (end1 - start1));
             double result2 = start2 + (random * (end2 - start2));
-            acceleration= new Vec(result1,result2);
+            acceleration= new Vec(result1,result2);*/
+            acceleration = new Vec(0,0);
+            position.setY(50);
         }
     }
 
