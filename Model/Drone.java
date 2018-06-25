@@ -45,7 +45,7 @@ public class Drone extends Element {
 		this.fuel = fuel;
 	}
 
-	public void move()
+	/*public void move()
 	{
 		if(getFuel() == 0) {
 			crash();
@@ -246,10 +246,8 @@ public class Drone extends Element {
 
 	}*/
 
-	public void separation(ArrayList<Drone> drones) {
+	/*public void separation(ArrayList<Drone> drones) {
 
-		/*if(regime == RegimeAlimentaire.Carnivore)
-		{*/
 			for(Drone d : drones)
 			{
 				double x=getX()-d.getX();
@@ -369,7 +367,7 @@ public class Drone extends Element {
 		}
 	}*/
 
-	public void deplacer(){
+	/*public void deplacer(){
 		int xmax = GameManager.getWidth();
 		int ymax = GameManager.getHeight();
 		if (position.getX() > xmax - 25){
@@ -462,4 +460,3 @@ public class Drone extends Element {
 			}
 		} else vitesse.limit(caracVitale.getVitesseMax());
 	}*/
-}

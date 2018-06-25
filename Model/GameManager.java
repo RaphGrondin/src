@@ -132,14 +132,14 @@ public class GameManager{
     {
         /* d = new BigDrone("Big Drone");
         drones.add(d);*/
-        createDrone(Integer.toString(nbDrones()+1), 0);
+        createDrone(Integer.toString(nbDrones()+1), 100);
     }
 
     public static void addLittleDrone()
     {
         /*Drone d = new LittleDrone("Little Drone");
         drones.add(d);*/
-        createDrone(Integer.toString(nbDrones()+1), 10);
+        createDrone(Integer.toString(nbDrones()+1), 50);
     }
 
     public static void addStation(int x, int y) {
@@ -149,7 +149,7 @@ public class GameManager{
 
     public static void createDrone (String name, int size)
     {
-        if (size == 10) {
+        if (size == 50) {
             drones.add(new LittleDrone(name));
         } else {
             drones.add(new BigDrone(name));
@@ -170,7 +170,7 @@ public class GameManager{
 
     public void run(){
         for(Drone drone : drones) {
-            if (!drone.isRecharging()) drone.move();
+            //if (!drone.isRecharging()) drone.move();
             drone.setFuel(drone.getFuel()-1);
         }
     }
