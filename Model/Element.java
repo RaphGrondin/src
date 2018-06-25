@@ -6,8 +6,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
-/**
+/** Abstract class of Element, defining the position, size and image of a given element.
  *
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  */
 public abstract class Element {
 	protected Vec position;
@@ -17,7 +19,7 @@ public abstract class Element {
 	protected int size;
 	protected BufferedImage image;
 
-	/**
+	/** Default constructor of an Element.
 	 *
 	 */
 	public Element() {
@@ -33,21 +35,22 @@ public abstract class Element {
 
 	}
 
-	/**
+	/** Constructor of Element. Creates a default Element with a given name.
 	 *
-	 * @param name
+	 * @param name name of the Element to be created.
 	 */
 	public Element(String name) {
 		this();
 		this.name = name;
 	}
 
-	/**
+	/** Constructor of Element. Creates an Element at a given location using coordinates,
+	 * with a given name and of a given size.
 	 *
-	 * @param x
-	 * @param y
-	 * @param name
-	 * @param size
+	 * @param x X coordinate of the Element.
+	 * @param y Y coordinate of the Element.
+	 * @param name name of the Element.
+	 * @param size size of the Element.
 	 */
 	public Element(double x, double y, String name, int size) {
 		this();
@@ -56,10 +59,10 @@ public abstract class Element {
 		this.size = size;
 	}
 
-	/**
+	/** Constructor of Element. Creates a default Element at a given location using coordinates.
 	 *
-	 * @param x
-	 * @param y
+	 * @param x X coordinate of the Element.
+	 * @param y Y coordinate of the Element.
 	 */
 	public Element (double x, double y) {
 		this();
@@ -68,63 +71,63 @@ public abstract class Element {
 		this.size = 0;
 	}
 
-	/**
+	/** Getter of the X coordinate of the Position.
 	 *
-	 * @return
+	 * @return return the X value of the coordinates of the Element.
 	 */
 	public double getX() {
 		return this.position.getX();
 	}
 
-	/**
+	/** Setter of the X coordinate of the Position.
 	 *
-	 * @param x
+	 * @param x the X coordinate to be set for the Element.
 	 */
 	public void setX(double x) {
 		this.position.setX(x);
 	}
 
-	/**
+	/** Getter of the Y coordinate of the Position.
 	 *
-	 * @return
+	 * @return return the Y value of the coordinates of the Element.
 	 */
 	public double getY() {
 		return this.position.getY();
 	}
 
-	/**
+	/** Setter of the Y coordinate of the Position.
 	 *
-	 * @param y
+	 * @param y the Y coordinate to be set for the Element.
 	 */
 	public void setY(double y) {
 		this.position.setY(y);
 	}
 
-	/**
+	/** Getter for the name of the Element.
 	 *
-	 * @return
+	 * @return return the name of the Element.
 	 */
 	public String getName() {
 		return this.name;
 	}
 
-	/**
+	/** Setter for the name of the Element.
 	 *
-	 * @param name
+	 * @param name the name to be set for the Element.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
+	/** Getter for the size of the Element.
 	 *
-	 * @return
+	 * @return return the size of the Element.
 	 */
 	public float getSize() {
 		return this.size;
 	}
 
-	/**
+	/** 
 	 *
 	 * @param size
 	 */
