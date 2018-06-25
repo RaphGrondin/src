@@ -4,19 +4,19 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Vector;
-
 import Model.Drone;
 import Model.GameManager;
-
 import javax.swing.*;
 
-
+/**
+ *
+ * @author Pierrick
+ *
+ */
 public class SideMenu extends JPanel{
 
 
@@ -26,6 +26,9 @@ public class SideMenu extends JPanel{
 	private static JComboBox<String> myList;
 
 
+	/**
+	 *
+	 */
 	public SideMenu(){
 		setPreferredSize(new Dimension(200, 600));
 		H=new Clock();
@@ -35,8 +38,8 @@ public class SideMenu extends JPanel{
 		bouton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(myList.getItemCount()!=0){
-					GameManager.removeDrone(myList.getSelectedItem().toString());
+				if(getMyList().getItemCount()!=0){
+					GameManager.removeDrone(getMyList().getSelectedItem().toString());
 				}
 			}
 		});
@@ -52,15 +55,6 @@ public class SideMenu extends JPanel{
 				names.add(drone.getName());
 			}
 		}
-        /*ArrayList<String> dronesNames = gm.getDronesName();
-        if (dronesNames == null) {
-             names = new String[1];
-             names[1] = "Aucun element";
-        } else {
-            names = new String[dronesNames.size()];
-            names = dronesNames.toArray(names);
-        }*/
-		//String[] names = {"one"}; //$NON-NLS-1$
 		setMyList(new JComboBox<>(names));
 		add(H);
 		add(text);
@@ -68,17 +62,18 @@ public class SideMenu extends JPanel{
 		add(bouton);
 	}
 
+	@Override
 	public void paintComponent(Graphics g){
 		g.setColor(Color.black);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		Font font = new Font("Courier", Font.BOLD, 20);
+		Font font = new Font("Courier", Font.BOLD, 20); //$NON-NLS-1$
 		g.setFont(font);
 		g.setColor(Color.white);
 
-		g.drawString("Drones :"+GameManager.nbDrones(),25, 150);
-		g.drawString("Packages :"+GameManager.nbPackages(),25, 200);
-		g.drawString("Stations :"+GameManager.nbStations(),25, 250);
-		g.drawString("Items :"+GameManager.nbItems(),25, 300);
+		g.drawString("Drones :"+GameManager.nbDrones(),25, 150); //$NON-NLS-1$
+		g.drawString("Packages :"+GameManager.nbPackages(),25, 200); //$NON-NLS-1$
+		g.drawString("Stations :"+GameManager.nbStations(),25, 250); //$NON-NLS-1$
+		g.drawString("Items :"+GameManager.nbItems(),25, 300); //$NON-NLS-1$
 	}
 
 
@@ -94,6 +89,20 @@ public class SideMenu extends JPanel{
 	 */
 	public static void setMyList(JComboBox<String> myList) {
 		SideMenu.myList = myList;
+	}
+
+	/**
+	 * @return
+	 */
+	public static GameManager getGm() {
+		return gm;
+	}
+
+	/**
+	 * @param gm
+	 */
+	public static void setGm(GameManager gm) {
+		SideMenu.gm = gm;
 	}
 
 }

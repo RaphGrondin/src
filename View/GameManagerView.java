@@ -7,46 +7,87 @@ import javax.swing.*;
 import Model.*;
 import Model.Package;
 
-@SuppressWarnings("serial")
+/**
+ * @author Pierrick
+ *
+ */
+/**
+ *
+ * @author Pierrick
+ *
+ */
 public class GameManagerView extends JPanel{
+	private static final long serialVersionUID = 1L;
 	private static float coefficientX = 1;
 	private static float coefficientY = 1;
+
+	/**
+	 *
+	 */
 	public GameManagerView() {
 
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public static float getCoefficientX() {
 		return coefficientX;
 	}
 
+	/**
+	 *
+	 * @param cx
+	 */
 	public static void setCoefficientX(float cx) {
 		coefficientX = cx;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public static float getCoefficientY() {
 		return coefficientY;
 	}
 
+	/**
+	 *
+	 * @param cy
+	 */
 	public static void setCoefficientY(float cy) {
 		coefficientY = cy;
 	}
-	
-    public static int ratioX(double x){
-        return (int)(x*getCoefficientX());
-    }
-    public static int ratioY(double y){
-        return (int)(y*getCoefficientY());
-    }
-    
+
+	/**
+	 *
+	 * @param x
+	 * @return
+	 */
+	public static int ratioX(double x){
+		return (int)(x*getCoefficientX());
+	}
+
+	/**
+	 *
+	 * @param y
+	 * @return
+	 */
+	public static int ratioY(double y){
+		return (int)(y*getCoefficientY());
+	}
+
+	@Override
 	public void paintComponent(Graphics g) {
 		g.setColor(new Color(255,255,255));
 		g.fillRect(0,0,getWidth(),getHeight());
-    	for (Case c : GameManager.getBoard().getCases()) {
+		for (Case c : GameManager.getBoard().getCases()) {
 			g.setColor(new Color(255,255,255));
 			g.fillRect(ratioX(c.getX()), ratioY(c.getY()), ratioX(c.getWidth()), ratioY(c.getHeight()));
 			g.setColor(new Color(0,0,0));
-    	    g.drawRect(ratioX(c.getX()), ratioY(c.getY()), ratioX(c.getWidth()), ratioY(c.getHeight()));
-    	}
+			g.drawRect(ratioX(c.getX()), ratioY(c.getY()), ratioX(c.getWidth()), ratioY(c.getHeight()));
+		}
 
 		for (int i=0; i<GameManager.getStations().size();i++){
 			Station s = GameManager.getStations().get(i);
@@ -56,15 +97,15 @@ public class GameManagerView extends JPanel{
 
 		for (int i=0; i<GameManager.getDrones().size();i++){
 			Drone d = GameManager.getDrones().get(i);
-		    g.drawImage(d.getImage(),ratioX(d.getX()-d.getSize()/2),ratioY(d.getY()-d.getSize()/2),(int)d.getSize(), (int)d.getSize(),this);
+			g.drawImage(d.getImage(),ratioX(d.getX()-d.getSize()/2),ratioY(d.getY()-d.getSize()/2),(int)d.getSize(), (int)d.getSize(),this);
 			//this.add(d.getFuelProgress());
-    	}
-    	    	
-    	for (int i=0;i<GameManager.getPackages().size();i++) {
-    		Package p = GameManager.getPackages().get(i);
-    		g.setColor(new Color(0,255,0));
+		}
+
+		for (int i=0;i<GameManager.getPackages().size();i++) {
+			Package p = GameManager.getPackages().get(i);
+			g.setColor(new Color(0,255,0));
 			g.drawImage(p.getImage(),ratioX(p.getX()-p.getSize()/2),ratioY(p.getY()-p.getSize()/2),(int)p.getSize(), (int)p.getSize(),this);
-    	}
+		}
 
 		for (int i=0; i<GameManager.getItems().size();i++){
 			Item it = GameManager.getItems().get(i);
@@ -74,9 +115,18 @@ public class GameManagerView extends JPanel{
 
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public int getLargeur() {
 		return getWidth();
 	}
+
+	/**
+	 *
+	 * @return
+	 */
 	public int getHauteur() {
 		return getHeight();
 	}
