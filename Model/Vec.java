@@ -35,8 +35,8 @@ public class Vec {
      * @param v the vector to be added to the calling vector.
      */
     void add(Vec v) {
-        x += v.x;
-        y += v.y;
+        this.x += v.x;
+        this.y += v.y;
     }
 
     /** Subtraction operation between two vectors.
@@ -44,8 +44,8 @@ public class Vec {
      * @param v the vector to be subtracted to the calling vector.
      */
     void sub(Vec v) {
-        x -= v.x;
-        y -= v.y;
+        this.x -= v.x;
+        this.y -= v.y;
     }
 
     /** Divide the vector coordinates with a real number.
@@ -53,8 +53,8 @@ public class Vec {
      * @param val real number to be divided to the coordinates.
      */
     void div(double val) {
-        x /= val;
-        y /= val;
+        this.x /= val;
+        this.y /= val;
     }
 
     /** Multiply the vector coordinates with a real number.
@@ -62,8 +62,8 @@ public class Vec {
      * @param val real number to multiply to the coordinates.
      */
     void mult(double val) {
-        x *= val;
-        y *= val;
+        this.x *= val;
+        this.y *= val;
     }
 
     /** Multiply each vector coordinate with a different real number.
@@ -72,8 +72,8 @@ public class Vec {
      * @param ord real number to multiply the Y coordinate.
      */
     void mult(double abs,double ord) {
-        x *= abs;
-        y *= ord;
+        this.x *= abs;
+        this.y *= ord;
     }
 
     /** Multiplication operation between two vectors.
@@ -81,8 +81,8 @@ public class Vec {
      * @param v the vector to be multiplied to the calling vector.
      */
     void mult(Vec v) {
-        x *= v.x;
-        y *= v.y;
+        this.x *= v.x;
+        this.y *= v.y;
     }
 
     /** Computes the norm of the vector.
@@ -90,7 +90,7 @@ public class Vec {
      * @return the norm of the vector.
      */
     double mag() {
-        return sqrt(pow(x, 2) + pow(y, 2));
+        return sqrt(pow(this.x, 2) + pow(this.y, 2));
     }
 
     /** Computes the dot product between two vectors.
@@ -99,7 +99,7 @@ public class Vec {
      * @return the dot product between the calling vector and the parameter vector.
      */
     double dot(Vec v) {
-        return x * v.x + y * v.y;
+        return this.x * v.x + this.y * v.y;
     }
 
     /** Normalizes the calling vector, transforming it in a unit vector.
@@ -108,8 +108,8 @@ public class Vec {
     void normalize() {
         double mag = mag();
         if (mag != 0) {
-            x /= mag;
-            y /= mag;
+            this.x /= mag;
+            this.y /= mag;
         }
     }
 
@@ -122,8 +122,8 @@ public class Vec {
     void limit(double lim) {
         double mag = mag();
         if (mag != 0 && mag > lim) {
-            x *= lim / mag;
-            y *= lim / mag;
+            this.x *= lim / mag;
+            this.y *= lim / mag;
         }
     }
 
@@ -133,7 +133,7 @@ public class Vec {
      * @return return theta from polar coordinates (r, theta).
      */
     double heading() {
-        return atan2(y, x);
+        return atan2(this.y, this.x);
     }
 
     /** Subtract two given vectors and return the result of the operation.
@@ -162,7 +162,7 @@ public class Vec {
      * @return return the distance between the two vectors as a double.
      */
     double dist(Vec v) {
-        return sqrt(pow(x - v.x, 2) + pow(y - v.y, 2));
+        return sqrt(pow(this.x - v.x, 2) + pow(this.y - v.y, 2));
     }
 
     /** Computes the angle between two given vectors.
@@ -175,20 +175,36 @@ public class Vec {
         return acos(v1.dot(v2) / (v1.mag() * v2.mag()));
     }
 
+    /** Setter for the X coordinate.
+     *
+     * @param x value of the X coordinate to set.
+     */
     public void setX(double x) {
         this.x=x;
     }
 
+    /** Setter for the Y coordinate.
+     *
+     * @param y value of the Y coordinate to set.
+     */
     public void setY(double y) {
         this.y=y;
     }
 
+    /** Getter for the X coordinate of the vector.
+     *
+     * @return return the X coordinate.
+     */
     public double getX(){
-        return x;
+        return this.x;
     }
 
+    /** Getter for the Y coordinate of the vector.
+     *
+     * @return return the Y coordinate.
+     */
     public double getY(){
-        return y;
+        return this.y;
     }
 
 

@@ -89,7 +89,7 @@ public class GameManager{
 
     public void go(){
         for(;;){
-            getTime().setTmp();
+            getTime().running();
             /*if (getTime().getM()==0 && nbItems() < 20) {
                 addItem();
             }*/

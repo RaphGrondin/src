@@ -46,14 +46,14 @@ public class GameManagerView extends JPanel{
 			g.fillRect(ratioX(c.getX()), ratioY(c.getY()), ratioX(c.getWidth()), ratioY(c.getHeight()));
 			g.setColor(new Color(0,0,0));
     	    g.drawRect(ratioX(c.getX()), ratioY(c.getY()), ratioX(c.getWidth()), ratioY(c.getHeight()));
-    	} 
-		
+    	}
+
 		for (int i=0; i<GameManager.getDrones().size();i++){
 			Drone d = GameManager.getDrones().get(i);
 		    g.drawImage(d.getImage(),ratioX(d.getX()-d.getSize()/2),ratioY(d.getY()-d.getSize()/2),(int)d.getSize(), (int)d.getSize(),this);
 			//this.add(d.getFuelProgress());
     	}
-    	    	
+
     	for (int i=0;i<GameManager.getPackages().size();i++) {
     		Package p = GameManager.getPackages().get(i);
     		g.setColor(new Color(0,255,0));
