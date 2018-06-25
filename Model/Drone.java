@@ -1,5 +1,6 @@
 package Model;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -8,6 +9,8 @@ public class Drone extends Element {
 	private float fuel;
 	private int score;
 	private Package pck;
+	private boolean isRecharging;
+	private static JProgressBar fuelProgress;
 
 	public Drone(String name, int size) {
 		super(name);
@@ -21,6 +24,10 @@ public class Drone extends Element {
 		this.fuel = 100;
 		this.score = 0;
 		this.pck = null;
+		this.fuelProgress = new JProgressBar(0,100);
+		this.fuelProgress.setValue(100);
+		this.fuelProgress.setBounds(x, y, 10, size);
+		this.fuelProgress.setVisible(true);
 	}
 
 	public Drone(float x, float y, String name, int size, float fuel, int score) {
@@ -28,6 +35,10 @@ public class Drone extends Element {
 		this.setImage("Model/_img/drone/drone.png");
 		this.fuel = fuel;
 		this.score = score;
+		this.fuelProgress = new JProgressBar(0,100);
+		this.fuelProgress.setValue((int) fuel);
+		this.fuelProgress.setBounds((int) x,(int) y, 10, size);
+		this.fuelProgress.setVisible(true);
 	}
 
 	public int getScore() {
@@ -44,15 +55,43 @@ public class Drone extends Element {
 
 	public void setFuel(float fuel) {
 		this.fuel = fuel;
+		this.fuelProgress.setValue((int) fuel);
+	}
+
+	public Package getPck() {
+		return pck;
+	}
+
+	public void setPck(Package pck) {
+		this.pck = pck;
+	}
+
+	public boolean isRecharging() {
+		return isRecharging;
+	}
+
+	public void setRecharging(boolean recharging) {
+		isRecharging = recharging;
+	}
+
+	public static JProgressBar getFuelProgress() {
+		return fuelProgress;
+	}
+
+	public static void setFuelProgress(JProgressBar fuelProgress) {
+		Drone.fuelProgress = fuelProgress;
 	}
 
 	public void move() {
-		if(getFuel() != 0) {
+		if(getFuel() == 0){
+			crash();
+			return;
+		}
+		if(getFuel() >= 10) {
 			if(this.pck == null) shiftToPackage();
 			else shiftToDestination();
-
-		} else {
-			crash();
+		} else if(getFuel()>0) {
+			shiftToStation();
 		}
 	}
 
@@ -99,6 +138,7 @@ public class Drone extends Element {
 
 	public void shiftToPackage(){
 		double d = 1000;
+
 		for(Package pck : GameManager.getPackages()){
 			// voir pour implenter tâche de drone
 			if(d > Vec.dist(pck.getPosition(), this.position)) {
@@ -109,7 +149,7 @@ public class Drone extends Element {
 				double ang = v.heading();
 				this.acceleration = new Vec(Math.cos(ang), Math.sin(ang));
 				if(Vec.dist(pck.getPosition(),this.position) <= this.size) {
-					this.pck = pck;
+					setPck(pck);
 					GameManager.getPackages().remove(pck);
 					break;
 				}
@@ -117,10 +157,28 @@ public class Drone extends Element {
 		}
 	}
 
+	void shiftToStation(){
+		double d = 1000;
+		for(Station station : GameManager.getStations()){
+			if(d > Vec.dist(station.getPosition(),this.position)){
+				d = Vec.dist(station.getPosition(), this.position);
+				double x = station.getPosition().getX()-this.position.getX();
+				double y = station.getPosition().getY()-this.position.getY();
+				Vec v = new Vec(x,y);
+				double ang = v.heading();
+				this.acceleration = new Vec(Math.cos(ang), Math.sin(ang));
+				if(Vec.dist(station.getPosition(), this.position) <= this.size){
+					setRecharging(true);
+					// méthode de recharge batterie
+				}
+			}
+		}
+	}
+
 	public void shiftToDestination(){
 		if(Vec.dist(this.pck.getDestination(),this.position) <= this.size){
-			this.pck = null;
-			this.score ++;
+			setPck(null);
+			setScore(getScore()+1);
 		} else {
 			double x = pck.getDestination().getX() - this.position.getX();
 			double y = pck.getDestination().getY() - this.position.getY();

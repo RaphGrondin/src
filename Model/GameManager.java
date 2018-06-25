@@ -164,6 +164,13 @@ public class GameManager{
         SideMenu.getMyList().setModel(model);
     }
 
+    public void run(){
+        for(Drone drone : drones) {
+            if (!drone.isRecharging()) drone.move();
+            drone.setFuel(drone.getFuel()-1);
+        }
+    }
+
     public static int getWidth() {
         return width;
     }

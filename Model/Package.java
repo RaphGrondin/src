@@ -18,7 +18,7 @@ public class Package extends Element{
 		int b = rnd.nextInt(GameManager.getHeight()-(int)getSize());
 		this.destination.setX(a+getSize()/2);
 		this.destination.setY(b+getSize()/2);
-		this.setImage("src/Model/_img/package/package.png");
+		this.setImage("Model/_img/package/package.png");
 	}
 
 	public Package(float x, float y, String name, int size, int value) {
