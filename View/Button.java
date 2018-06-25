@@ -8,77 +8,71 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 
+/**
+ *
+ * @author Pierrick
+ *
+ */
 public class Button extends JButton implements MouseListener {
 
-	
+
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private Color c1,c2;
-	
-	  public Button(String str){
-	    super(str);
-	    this.name = str;
-	    c1=Color.black;
-	    c2=Color.white;
-	    addMouseListener(this);
-	    
-	  }
 
-	        
+	/**
+	 *
+	 * @param str
+	 */
+	public Button(String str){
+		super(str);
+		this.name = str;
+		this.c1=Color.black;
+		this.c2=Color.white;
+		addMouseListener(this);
+	}
 
-	  public void paintComponent(Graphics g){
+	@Override
+	public void paintComponent(Graphics g){
 
-		g.setColor(c1);
+		g.setColor(this.c1);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		Font font = new Font("Courier", Font.BOLD, 20);
-	    g.setFont(font);
-	    g.setColor(c2);
-	    g.drawString(this.name, this.getWidth() / 2 - (this.getWidth()/ 2 /4), (this.getHeight() / 2) + 5);
+		Font font = new Font("Courier", Font.BOLD, 20); //$NON-NLS-1$
+		g.setFont(font);
+		g.setColor(this.c2);
+		g.drawString(this.name, this.getWidth() / 2 - (this.getWidth()/ 2 /4), (this.getHeight() / 2) + 5);
 
-	  }
-
-
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		c1=Color.white;
-		c2=Color.black;
-		
+		this.c1=Color.white;
+		this.c2=Color.black;
+
 	}
-
-
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		c1=Color.black;
-		c2=Color.white;
+		this.c1=Color.black;
+		this.c2=Color.white;
 	}
-
-
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
-	}  
-	
 
-	  
-	  
+	}
+
 }

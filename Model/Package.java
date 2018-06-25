@@ -33,7 +33,7 @@ public class Package extends Element{
 	 * @param x X coordinates of the package.
 	 * @param y Y coordinates of the package.
 	 * @param name the name that identifies the package.
-	 * @param size the size of the package (big/small).
+	 * @param size the size of the package.
 	 * @param value the scoring value of the package.
 	 */
 	public Package(float x, float y, String name, int size, int value) {

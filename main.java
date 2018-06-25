@@ -1,7 +1,17 @@
 import Model.GameManager;
 import View.*;
 
+/**
+ *
+ * @author Pierrick
+ *
+ */
 public class main {
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         // LANCEMENT DU MODELE
         GameManager gm = new GameManager();

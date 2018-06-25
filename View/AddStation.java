@@ -6,46 +6,43 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
-import Model.GameManager;
-
+/**
+ *
+ * @author Pierrick
+ *
+ */
 public class AddStation extends JPanel implements ActionListener{
 
     private static final long serialVersionUID = 1L;
-    private Button station = new Button("Station");
-    private JLabel text = new JLabel("Add station");
+    private Button station = new Button("Station"); //$NON-NLS-1$
+    private JLabel text = new JLabel("Add station"); //$NON-NLS-1$
 
-
+    /**
+     *
+     */
     public AddStation()
     {
         setBackground(Color.black);
         setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.white));
         setPreferredSize(new Dimension(400, 200));
-        Font police = new Font("Courier", Font.BOLD, 20);
+        Font police = new Font("Courier", Font.BOLD, 20); //$NON-NLS-1$
 
-        text.setFont(police);
-        text.setForeground(Color.white);
-        text.setHorizontalAlignment(JLabel.CENTER);
+        this.text.setFont(police);
+        this.text.setForeground(Color.white);
+        this.text.setHorizontalAlignment(SwingConstants.CENTER);
         setLayout(new BorderLayout());
-        add(text, BorderLayout.CENTER);
-        add(station, BorderLayout.NORTH);
-        station.addActionListener(this);
+        add(this.text, BorderLayout.CENTER);
+        add(this.station, BorderLayout.NORTH);
+        this.station.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        /*if(arg0.getSource() == station){
-            if (GameManager.nbStations() < 5) {
-                GameManager.addStation();
-            }
-        }*/
+        // TODO Auto-generated method stub
     }
 }
