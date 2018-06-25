@@ -127,25 +127,25 @@ public abstract class Element {
 		return this.size;
 	}
 
-	/** 
+	/** Setter for the size of the Element.
 	 *
-	 * @param size
+	 * @param size the size to be set for the Element.
 	 */
 	public void setSize(int size) {
 		this.size = size;
 	}
 
-	/**
+	/** Getter for the image of the Element.
 	 *
-	 * @return
+	 * @return return the image of the Element.
 	 */
 	public BufferedImage getImage() {
 		return this.image;
 	}
 
-	/**
+	/** Setter for the path of the image for the Element.
 	 *
-	 * @param path
+	 * @param path the path of the image to be set for the Element.
 	 */
 	public void setImage(String path) {
 		try {
@@ -155,49 +155,49 @@ public abstract class Element {
 		}
 	}
 
-	/**
+	/** Getter for the acceleration of the Element.
 	 *
-	 * @return
+	 * @return return the acceleration of the Element.
 	 */
 	public Vec getAcceleration() {
 		return this.acceleration;
 	}
 
-	/**
+	/** Setter for the acceleration of the Element.
 	 *
-	 * @param acceleration
+	 * @param acceleration the acceleration to be set for the Element.
 	 */
 	public void setAcceleration(Vec acceleration) {
 		this.acceleration = acceleration;
 	}
 
-	/**
+	/** Getter for the speed of the Element.
 	 *
-	 * @return
+	 * @return return the speed of the Element.
 	 */
 	public Vec getSpeed() {
 		return this.speed;
 	}
 
-	/**
+	/** Setter for the speed of the Element.
 	 *
-	 * @param speed
+	 * @param speed the speed to be set for the Element.
 	 */
 	public void setSpeed(Vec speed) {
 		this.speed = speed;
 	}
 
-	/**
+	/** Getter for the position of the Element.
 	 *
-	 * @return
+	 * @return return the position of the Element.
 	 */
 	public Vec getPosition() {
 		return this.position;
 	}
 
-	/**
+	/** Setter for the position of the Element.
 	 *
-	 * @param position
+	 * @param position the position to be set for the Element.
 	 */
 	public void setPosition(Vec position) {
 		this.position = position;

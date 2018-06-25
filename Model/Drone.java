@@ -2,7 +2,9 @@ package Model;
 
 import java.util.*;
 
-/**
+/** Implementation of the Drones. This class handles the movement of the drones so that they
+ * may fulfill their tasks.
+ * The drones move around randomly until they have to refuel or a package has to be picked up.
  *
  */
 public class Drone extends Element {
@@ -10,10 +12,10 @@ public class Drone extends Element {
     private int score;
     private Package pck;
 
-    /**
+    /** Constructor of the Drone. Creates a drone in function of a name and a size.
      *
-     * @param name
-     * @param size
+     * @param name name to be set for the drone.
+     * @param size size to be set for the drone.
      */
     public Drone(String name, int size) {
         super(name);
@@ -38,14 +40,15 @@ public class Drone extends Element {
         this.acceleration = new Vec (Accx,Accy);
     }
 
-    /**
+    /** Constructor of the Drone. Creates a drone in function of coordinates, name, size, fuel value
+     * and score value.
      *
-     * @param x
-     * @param y
-     * @param name
-     * @param size
-     * @param fuel
-     * @param score
+     * @param x X coordinates to be set for the Drone.
+     * @param y Y coordinates to be set for the Drone.
+     * @param name name to be set for the Drone.
+     * @param size size to be set for the Drone.
+     * @param fuel fuel to be set for the Drone.
+     * @param score score to be set for the Drone.
      */
     public Drone(float x, float y, String name, int size, float fuel, int score) {
         super(x, y, name, size);
@@ -54,39 +57,42 @@ public class Drone extends Element {
         this.score = score;
     }
 
-    /**
+    /** Getter for the score.
      *
-     * @return
+     * @return return the score value of the Drone.
      */
     public int getScore() {
         return this.score;
     }
 
-    /**
+    /** Setter for the score.
      *
-     * @param score
+     * @param score the score value to be set for the Drone.
      */
     public void setScore(int score) {
         this.score = score;
     }
 
-    /**
+    /** Getter for the fuel.
      *
-     * @return
+     * @return return the fuel value of the Drone.
      */
     public float getFuel() {
         return this.fuel;
     }
 
-    /**
+    /** Setter for the fuel.
      *
-     * @param fuel
+     * @param fuel the fuel value to be set for the Drone.
      */
     public void setFuel(float fuel) {
         this.fuel = fuel;
     }
 
-    /**
+    /** Method that defines the movement of the Drones. Movement is defined in
+     * function of Fuel levels and relative Package position. If the drone has a
+     * package, it delivers it to a station.
+     * If no fuel is left, the drone crashes {@link #crash()}.
      *
      */
     public void move() {
@@ -111,7 +117,7 @@ public class Drone extends Element {
 
     }
 
-    /**
+    /** Defines what happens when the drone crashes. Is called when fuel reached 0.
      *
      */
     public void crash() {
@@ -125,7 +131,7 @@ public class Drone extends Element {
 
     }
 
-    /**
+    /** Searches for the nearest package to pick it up.
      *
      */
     public void findPackage() {
@@ -133,21 +139,22 @@ public class Drone extends Element {
         for(int i=0; i< GameManager.getPackages().size();i++) {
             if (this instanceof LittleDrone) {
                 if (GameManager.getPackages().get(i) instanceof LittlePackage) {
-                    findClosestPackage(i, d);
+                    selectPackage(i, d);
                 }
             } else {
-                findClosestPackage(i, d);
+                selectPackage(i, d);
             }
         }
     }
 
-    /**
+    /** Looks for the package of index i and compare its distance to the current
+     * minimal distance.
      *
-     * @param i
-     * @param d
-     * @return
+     * @param i the index of the package that has to be looked up.
+     * @param d the current minimum distance between the drone and a package.
+     * @return the minimum distance between the drone and a package
      */
-    public double findClosestPackage(int i, double d){
+    public double selectPackage(int i, double d){
         if(d > Vec.dist(this.position, GameManager.getPackages().get(i).position)) {
             d=Vec.dist(this.position, GameManager.getPackages().get(i).position);
             double x=GameManager.getPackages().get(i).getX()-this.getX();
@@ -171,7 +178,7 @@ public class Drone extends Element {
         return d;
     }
 
-    /**
+    /** Searches for the nearest Station to either refuel or drop a package.
      *
      */
     public void findStation() {
@@ -200,7 +207,7 @@ public class Drone extends Element {
         }
     }
 
-    /**
+    /** Updates the position of the current drone.
      *
      */
 	private void updatePos() {
@@ -210,7 +217,7 @@ public class Drone extends Element {
         this.acceleration.mult(0);
 	}
 
-    /**
+    /** Forces the drone to stay within the borders of the board.
      *
      */
     public void stay() {
@@ -254,13 +261,16 @@ public class Drone extends Element {
         }
     }
 
+    /** Updates the fuel state of the drone.
+     *
+     */
 	public void updateState()	{
 
         if(this.getFuel()>=100) {
             this.setFuel(100);
         }
         this.setFuel(this.getFuel()-10);
-		if (getFuel() <=0 ) {
+		if (this.getFuel() <=0 ) {
 			crash();
 		}
 	}

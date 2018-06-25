@@ -1,6 +1,7 @@
 package Model;
 
 /** Implementation of the station where the drones can dock and drop packages.
+ * Drones can refuel at a station.
  *
  * @author Pierrick GRAF
  * @author Raphaël GRONDIN
