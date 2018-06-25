@@ -14,7 +14,7 @@ public abstract class Element {
 	protected String name;
 	protected int size;
 	protected BufferedImage image;
-	
+
 	public Element() {
 		Random rnd = new Random();
 
@@ -45,35 +45,35 @@ public abstract class Element {
 		this.name = "Null";
 		this.size = 0;
 	}
-	
+
 	public double getX() {
 		return this.position.getX();
 	}
-	
+
 	public void setX(double x) {
 		this.position.setX(x);
 	}
-	
+
 	public double getY() {
 		return this.position.getY();
 	}
-	
+
 	public void setY(double y) {
 		this.position.setY(y);
 	}
-	
+
 	public String getName() {
 		return this.name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public float getSize() {
 		return this.size;
 	}
-	
+
 	public void setSize(int size) {
 		this.size = size;
 	}
@@ -104,4 +104,11 @@ public abstract class Element {
 		this.speed = speed;
 	}
 
+	public Vec getPosition() {
+		return position;
+	}
+
+	public void setPosition(Vec position) {
+		this.position = position;
+	}
 }

@@ -13,7 +13,7 @@ public class Station extends Element{
 		this.setY(y+getSize()/2);
 		this.droneCapacity = droneCapacity;
 		this.packageCapacity = packageCapacity;
-		this.setImage("src/Model/_img/drone/helicopter.png");
+		this.setImage("Model/_img/drone/helicopter.png");
 
 	}
 	
