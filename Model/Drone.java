@@ -17,7 +17,7 @@ public class Drone extends Element {
 		int y = rnd.nextInt(GameManager.getHeight()-(int)getSize());
 		this.setX(x+getSize()/2);
 		this.setY(y+getSize()/2);
-		this.setImage("src/Model/_img/drone/drone.png");
+		this.setImage("Model/_img/drone/drone.png");
 		this.fuel = 100;
 		this.score = 0;
 		this.pck = null;
@@ -25,7 +25,7 @@ public class Drone extends Element {
 
 	public Drone(float x, float y, String name, int size, float fuel, int score) {
 		super(x,y,name,size);
-		this.setImage("src/Model/_img/drone/drone.png");
+		this.setImage("Model/_img/drone/drone.png");
 		this.fuel = fuel;
 		this.score = score;
 	}
