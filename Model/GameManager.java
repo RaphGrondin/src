@@ -93,8 +93,8 @@ public class GameManager{
             /*if (getTime().getM()==0 && nbItems() < 20) {
                 addItem();
             }*/
-            for(Drone drone : drones){
-                drone.move();
+            for (int i=0; i<drones.size();i++) {
+                drones.get(i).move();
             }
             /*for (int i=0; i<animaux.size();i++) {
                 //Case c = p.getCase(animaux.get(i).position.getX(), animaux.get(i).position.getY());
