@@ -58,7 +58,7 @@ public class Drone extends Element {
                 findStation();
             }
         }
-
+        updatePos();
     }
 
     public void crash() {
@@ -90,21 +90,14 @@ public class Drone extends Element {
 
         //System.out.println("Position de la station : " + distanceStation.get(min).getX());
         //System.out.println("Position du drone : " + this.getX());
-        System.out.println("Acceleration : " + acceleration.getX());
-        System.out.println("Vitesse : " + speed.getX());
+        //System.out.println("Acceleration : " + acceleration.getX());
+        //System.out.println("Vitesse : " + speed.getX());
     }
 
-	/*private void updatePos(List<Case> cases)
-	{
-
-		vitesse.add(acceleration);
-		for (Case c :cases){
-			modifVitesse(c);
-		}
-		position.add(vitesse);
-
-
-	}*/
+	private void updatePos() {
+		speed.add(acceleration);
+		position.add(speed);
+	}
 
 	/*public void updateEtat(List<Animal> animaux,List<Nourriture> nourritures)
 
