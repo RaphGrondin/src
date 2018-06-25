@@ -77,7 +77,7 @@ public class Drone extends Element {
         if(GameManager.getTime().getM()==0) {
             updateEtat();
         }
-        stay();
+
     }
 
     public void crash() {
@@ -90,7 +90,7 @@ public class Drone extends Element {
     }
 
     public void findPackage() {
-        double	d = 1000;
+        double	d = 10000000;
         for(int i=0; i< GameManager.getPackages().size();i++) {
             if(d > Vec.dist(position, GameManager.getPackages().get(i).position)) {
                 d=Vec.dist(position, GameManager.getPackages().get(i).position);
@@ -105,7 +105,7 @@ public class Drone extends Element {
                         && this.getX() <= GameManager.getPackages().get(i).getX()+20
                         && getY()+this.getSize() >= GameManager.getPackages().get(i).getY()
                         && getY() < GameManager.getPackages().get(i).getY()+20) {
-                    speed.mult(0.1);;
+                    speed.mult(0.1);
                     acceleration.mult(0.1);
                     pck = GameManager.getPackages().get(i);
                     GameManager.getPackages().remove(GameManager.getPackages().get(i));
@@ -117,8 +117,8 @@ public class Drone extends Element {
     }
 
     public void findStation() {
-        double min = 100000000;
-        double d = 0;
+        double min = 1000;
+        double d = 10000;
         distanceStation.clear();
         for (Station s : GameManager.getStations()) {
             //distanceStation.put(Math.sqrt(Math.pow(s.getX()-this.getX(),2)+Math.pow(s.getY()-this.getY(),2)),new Vec(s.getX(),s.getY()));
@@ -135,8 +135,6 @@ public class Drone extends Element {
         Vec v = distanceStation.get(min);
         double ang = v.heading();
         acceleration=new Vec(Math.cos(ang),Math.sin(ang));
-
-
     }
 
     public void separation() {
@@ -153,7 +151,9 @@ public class Drone extends Element {
 
 	private void updatePos() {
 		speed.add(acceleration);
+		speed.limit(7);
 		position.add(speed);
+		acceleration.mult(0);
 	}
 
     public void stay() {
@@ -166,6 +166,8 @@ public class Drone extends Element {
             double random = new Random().nextDouble();
             double result1 = start1 + (random * (end1 - start1));
             double result2 = start2 + (random * (end2 - start2));
+            System.out.println(result1);
+            System.out.println(result2);
             acceleration= new Vec(result1,result2);
         } else if (getY() > GameManager.getHeight()-(50+this.getSize()) ) {
             double start1 = 0;
