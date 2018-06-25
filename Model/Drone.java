@@ -54,7 +54,7 @@ public class Drone extends Element {
             crash();
         } else {
             if (getFuel() <= 30) {
-                findStation();
+                //findStation();
             } else {
 
             }
@@ -72,13 +72,13 @@ public class Drone extends Element {
     }
 
 
-    public void findStation() {
+    /*public void findStation() {
         distanceStation.clear();
         for (Station s : GameManager.getStations()) {
             distanceStation.add(Math.sqrt(Math.pow(s.getX()-this.getX(),2)+Math.pow(s.getY()-this.getY(),2)));
         }
         System.out.println(distance.get(0));
-    }
+    }*/
 
 	/*private void updatePos(List<Case> cases)
 	{
