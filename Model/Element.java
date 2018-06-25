@@ -25,6 +25,7 @@ public abstract class Element {
 		this.name = "NULL";
 		this.size = 0;
 		this.position = new Vec(x,y);
+
 	}
 
 	public Element(String name) {

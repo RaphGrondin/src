@@ -1,15 +1,12 @@
 package Model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Drone extends Element {
     private float fuel;
     private int score;
     private Package pck;
-    private HashMap<Station, Vec> distanceStation;
+    private HashMap<Double, Vec> distanceStation;
 
     public Drone(String name, int size) {
         super(name);
@@ -23,6 +20,8 @@ public class Drone extends Element {
         this.fuel = 20;
         this.score = 0;
         this.distanceStation = new HashMap<>();
+        this.speed = new Vec(4,4);
+        this.acceleration = new Vec (4,4);
     }
 
     public Drone(float x, float y, String name, int size, float fuel, int score) {
@@ -56,7 +55,7 @@ public class Drone extends Element {
             if (getFuel() <= 30) {
                 findStation();
             } else {
-
+                findStation();
             }
         }
 
@@ -73,11 +72,26 @@ public class Drone extends Element {
 
 
     public void findStation() {
+        double min = 100000000;
         distanceStation.clear();
         for (Station s : GameManager.getStations()) {
-            distanceStation.add(Math.sqrt(Math.pow(s.getX()-this.getX(),2)+Math.pow(s.getY()-this.getY(),2)));
+            distanceStation.put(Math.sqrt(Math.pow(s.getX()-this.getX(),2)+Math.pow(s.getY()-this.getY(),2)),new Vec(s.getX(),s.getY()));
         }
-        System.out.println(distance.get(0));
+
+        for (Map.Entry<Double,Vec> e : distanceStation.entrySet()) {
+            if (e.getKey()< min) {
+                min = e.getKey();
+            }
+        }
+
+        Vec v = distanceStation.get(min);
+        double ang = v.heading();
+        acceleration=new Vec(Math.cos(ang),Math.sin(ang));
+
+        //System.out.println("Position de la station : " + distanceStation.get(min).getX());
+        //System.out.println("Position du drone : " + this.getX());
+        System.out.println("Acceleration : " + acceleration.getX());
+        System.out.println("Vitesse : " + speed.getX());
     }
 
 	/*private void updatePos(List<Case> cases)
