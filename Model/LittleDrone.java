@@ -1,6 +1,6 @@
 package Model;
 
-/** Implementation of a Little package, which is a Drone that can only pick up
+/** Implementation of a Little drone, which is a Drone that can only pick up
  * Little Packages
  *
  * @author Pierrick GRAF

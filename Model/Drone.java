@@ -6,6 +6,8 @@ import java.util.*;
  * may fulfill their tasks.
  * The drones move around randomly until they have to refuel or a package has to be picked up.
  *
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  */
 public class Drone extends Element {
     private float fuel;

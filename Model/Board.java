@@ -2,14 +2,17 @@ package Model;
 
 import java.util.ArrayList;
 
-/**
+/** Implementation of the Board. Board is composed of multiple cases.
  *
  */
 public class Board extends Element{
     private ArrayList<Case> cases;
 
-    /**
+    /** Constructor for Board. Sets the size of the Board to the size of the
+     * GameManager and defines the number of cases to create.
      *
+     * @author Pierrick GRAF
+     * @author Raphaël GRONDIN
      */
     public Board() {
         this.cases = new ArrayList<>();
@@ -25,9 +28,9 @@ public class Board extends Element{
         }
     }
 
-    /**
+    /** Getter for the list of Cases.
      *
-     * @return
+     * @return return the list of Cases composing the Board.
      */
     public ArrayList<Case> getCases() {
         return this.cases;
