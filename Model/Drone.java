@@ -17,7 +17,7 @@ public class Drone extends Element {
         this.setX(x + getSize() / 2);
         this.setY(y + getSize() / 2);
         this.setImage("src/Model/_img/drone/drone.png");
-        this.fuel = 20;
+        this.fuel = 50;
         this.score = 0;
         this.distanceStation = new HashMap<>();
         Random rnd1= new Random();
@@ -63,15 +63,9 @@ public class Drone extends Element {
         } else {
             if (pck == null) {
                 findPackage();
-            } else {
+            } else if (pck != null || this.getFuel()<=30){
                 findStation();
             }
-            //findPackage();
-            /*if (getFuel() <= 30) {
-                findStation();
-            } else {
-                findStation();
-            }*/
         }
         updatePos();
         if(GameManager.getTime().getM()==0) {
@@ -134,6 +128,9 @@ public class Drone extends Element {
                         && getY() < GameManager.getStations().get(i).getY()+20) {
                     speed.mult(0.1);
                     acceleration.mult(0.1);
+                    pck = null;
+                    this.setImage("src/Model/_img/drone/drone.png");
+                    this.setFuel(100);
                 }
             }
         }
@@ -204,6 +201,11 @@ public class Drone extends Element {
     }
 
 	public void updateEtat()	{
+
+        if(this.getFuel()>=100) {
+            this.setFuel(100);
+        }
+        this.setFuel(this.getFuel()-10);
 		if (getFuel() <=0 ) {
 			crash();
 		}

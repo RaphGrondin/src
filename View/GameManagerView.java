@@ -48,23 +48,23 @@ public class GameManagerView extends JPanel{
     	    g.drawRect(ratioX(c.getX()), ratioY(c.getY()), ratioX(c.getWidth()), ratioY(c.getHeight()));
     	}
 
-		for (int i=0; i<GameManager.getDrones().size();i++){
-			Drone d = GameManager.getDrones().get(i);
-		    g.drawImage(d.getImage(),ratioX(d.getX()-d.getSize()/2),ratioY(d.getY()-d.getSize()/2),(int)d.getSize(), (int)d.getSize(),this);
-			//this.add(d.getFuelProgress());
-    	}
-
-    	for (int i=0;i<GameManager.getPackages().size();i++) {
-    		Package p = GameManager.getPackages().get(i);
-    		g.setColor(new Color(0,255,0));
-			g.drawImage(p.getImage(),ratioX(p.getX()-p.getSize()/2),ratioY(p.getY()-p.getSize()/2),(int)p.getSize(), (int)p.getSize(),this);
-    	}
-
 		for (int i=0; i<GameManager.getStations().size();i++){
 			Station s = GameManager.getStations().get(i);
 			//g.drawImage(s.getImage(),(int)ratioX(0-s.getSize()/2),(int)ratioY(0-s.getSize()/2),(int)s.getSize(), (int)s.getSize(),this);
 			g.drawImage(s.getImage(),ratioX(s.getX()-s.getSize()/2),ratioY(s.getY()-s.getSize()/2),(int)s.getSize(), (int)s.getSize(),this);
 		}
+
+		for (int i=0; i<GameManager.getDrones().size();i++){
+			Drone d = GameManager.getDrones().get(i);
+		    g.drawImage(d.getImage(),ratioX(d.getX()-d.getSize()/2),ratioY(d.getY()-d.getSize()/2),(int)d.getSize(), (int)d.getSize(),this);
+			//this.add(d.getFuelProgress());
+    	}
+    	    	
+    	for (int i=0;i<GameManager.getPackages().size();i++) {
+    		Package p = GameManager.getPackages().get(i);
+    		g.setColor(new Color(0,255,0));
+			g.drawImage(p.getImage(),ratioX(p.getX()-p.getSize()/2),ratioY(p.getY()-p.getSize()/2),(int)p.getSize(), (int)p.getSize(),this);
+    	}
 
 		for (int i=0; i<GameManager.getItems().size();i++){
 			Item it = GameManager.getItems().get(i);
