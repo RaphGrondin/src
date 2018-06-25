@@ -48,12 +48,12 @@ public class AddDrone extends JPanel implements ActionListener{
 
 
         if(arg0.getSource() == littleDrone){
-            if (GameManager.nbDrones() < 25) {
+            if (GameManager.nbDrones() < 10) {
                 GameManager.addLittleDrone();
             }
 
         } else {
-            if (GameManager.nbDrones() < 25) {
+            if (GameManager.nbDrones() < 10) {
                 GameManager.addBigDrone();
             }
         }

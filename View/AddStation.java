@@ -42,10 +42,10 @@ public class AddStation extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        if(arg0.getSource() == station){
+        /*if(arg0.getSource() == station){
             if (GameManager.nbStations() < 5) {
                 GameManager.addStation();
             }
-        }
+        }*/
     }
 }

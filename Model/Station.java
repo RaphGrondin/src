@@ -6,12 +6,9 @@ public class Station extends Element{
 	private int droneCapacity;
 	private int packageCapacity;
 	
-	public Station(int droneCapacity, int packageCapacity) {
+	public Station(int droneCapacity, int packageCapacity, int x, int y) {
 		super();
 		this.setSize(100);
-		Random rnd = new Random();
-		int x = rnd.nextInt(GameManager.getWidth()-(int)getSize());
-		int y = rnd.nextInt(GameManager.getHeight()-(int)getSize());
 		this.setX(x+getSize()/2);
 		this.setY(y+getSize()/2);
 		this.droneCapacity = droneCapacity;

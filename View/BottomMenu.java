@@ -29,7 +29,7 @@ public class BottomMenu extends JPanel implements ActionListener{
 		pan1 =new AddDrone();
 		pan2 =new AddPackage();
 		pan3 = new AddItem();
-		pan4 = new AddStation();
+		//pan4 = new AddStation();
 	    setBackground(Color.black);
 		setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.white));
 		setLayout(new BorderLayout());
@@ -37,7 +37,7 @@ public class BottomMenu extends JPanel implements ActionListener{
 		tab.addTab("Add drone", pan1);
 		tab.addTab("Add package", pan2);
 		tab.addTab("Add item", pan3);
-		tab.addTab("Add station", pan4);
+		//tab.addTab("Add station", pan4);
 		add(tab,BorderLayout.CENTER);
 		add(bout,BorderLayout.EAST);
 		/*add(pan1, BorderLayout.WEST);

@@ -21,6 +21,10 @@ public class GameManager{
         drones = new ArrayList<>();
         items = new ArrayList<>();
         stations = new ArrayList<>();
+        addStation(25,50);
+        addStation(25,575);
+        addStation(1175,50);
+        addStation(1175,575);
     }
 
     public static ArrayList<Package> getPackages() {
@@ -129,8 +133,8 @@ public class GameManager{
         drones.add(d);
     }
 
-    public static void addStation() {
-        Station s = new Station(2,5);
+    public static void addStation(int x, int y) {
+        Station s = new Station(2,5, x ,y);
         stations.add(s);
     }
 
