@@ -19,12 +19,12 @@ public class BottomMenu extends JPanel implements ActionListener{
 	private AddItem pan3;
 	private AddStation pan4;
 	private JTabbedPane tab;
-	private Button bout = new Button ("Create Drone");
+	//private Button bout = new Button ("Create Drone");
 	
 	public BottomMenu()
 	{
 		setPreferredSize(new Dimension(1200, 100));
-		bout.setPreferredSize(new Dimension(400,200));
+		//bout.setPreferredSize(new Dimension(400,200));
 		tab = new JTabbedPane();
 		pan1 =new AddDrone();
 		pan2 =new AddPackage();
@@ -39,12 +39,12 @@ public class BottomMenu extends JPanel implements ActionListener{
 		tab.addTab("Add item", pan3);
 		//tab.addTab("Add station", pan4);
 		add(tab,BorderLayout.CENTER);
-		add(bout,BorderLayout.EAST);
+		//add(bout,BorderLayout.EAST);
 		/*add(pan1, BorderLayout.WEST);
 		add(pan2, BorderLayout.CENTER);
 		*/
 
-		bout.addActionListener(this);
+		//bout.addActionListener(this);
 	}
 
 	@Override
