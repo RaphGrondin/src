@@ -23,33 +23,31 @@ import javax.swing.border.TitledBorder;
 import Model.GameManager;
 
 public class CreateDrone extends JDialog implements ActionListener{
-	
+
 	private static final long serialVersionUID = 1L;
 	private JTextField nomT;
-	private JLabel nomL,nbPattesLabel,poidsL,tailleL,vitMaxL,rougeL,vertL,bleuL;
+	private JLabel nomL;
 	private ButtonGroup bgR = new ButtonGroup();
 	private ButtonGroup bgP = new ButtonGroup();
-	JButton creer;  
+	JButton creer;
 	JButton annuler;
-	private JRadioButton carn,herb,diurne,noct;
-	private JCheckBox terre,eau,air;
-	private SpinnerNumberModel taille,poids,vitMax,nbPattes,rouge,vert,bleu;
-	  
-	/*public CreateDrone(JFrame parent, String title, boolean modal){
+	private JRadioButton petit, grand;
 
-	    super(parent, title, modal);
-	    setSize(600, 400);
-	    setLocationRelativeTo(null);
-	    setResizable(false);   
-	    initComponent();
-	    setVisible(true);
+	public CreateDrone(JFrame parent, String title, boolean modal){
 
-	  }
+		super(parent, title, modal);
+		setSize(600, 400);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		initComponent();
+		setVisible(true);
+
+	}
 	private void initComponent()
 	{
 		Font font = new Font("Courier", Font.BOLD, 15);
-	    JPanel pan =new JPanel();
-	    pan.setSize(this.getWidth(),this.getHeight());
+		JPanel pan =new JPanel();
+		pan.setSize(this.getWidth(),this.getHeight());
 		pan.setBackground(Color.black);
 		//Nom
 		JPanel panNom = new JPanel();
@@ -66,10 +64,20 @@ public class CreateDrone extends JDialog implements ActionListener{
 		nomL = new JLabel("Saisir un nom :");
 		nomL.setFont(font);
 		nomL.setForeground(Color.white);
+		petit=new JRadioButton("Petit drone");
+		petit.setFont(font);
+		petit.setBackground(Color.black);
+		petit.setForeground(Color.white);
+		grand=new JRadioButton("Grand drone");
+		grand.setFont(font);
+		grand.setBackground(Color.black);
+		grand.setForeground(Color.white);
 		panNom.add(nomL);
 		panNom.add(nomT);
-		
-		//Regime
+		panNom.add(petit);
+		panNom.add(grand);
+
+		/*//Regime
 		JPanel panReg = new JPanel();
 		panReg.setBackground(Color.black);
 		panReg.setPreferredSize(new Dimension(300,100));
@@ -90,15 +98,15 @@ public class CreateDrone extends JDialog implements ActionListener{
 		bgR.add(carn);
 		bgR.add(herb);
 		panReg.add(carn);
-		panReg.add(herb);
-		
-		
-		//Déplacement
-	    JPanel panDep=new JPanel();
+		panReg.add(herb);*/
+
+
+		//D?placement
+	    /*JPanel panDep=new JPanel();
 	    panDep.setBackground(Color.black);
 		panDep.setPreferredSize(new Dimension(300,100));
 		TitledBorder deplacement;
-		deplacement = BorderFactory.createTitledBorder("Déplacement de l'animal");
+		deplacement = BorderFactory.createTitledBorder("D?placement de l'animal");
 		deplacement.setTitleFont(font);
 		deplacement.setTitleColor(Color.white);
 		panDep.setBorder(deplacement);
@@ -109,28 +117,28 @@ public class CreateDrone extends JDialog implements ActionListener{
 		eau=new JCheckBox("Aquatique");
 		eau.setBackground(Color.black);
 		eau.setForeground(Color.white);
-		air=new JCheckBox("Aérien");
+		air=new JCheckBox("A?rien");
 		air.setBackground(Color.black);
 		air.setForeground(Color.white);
 		air.setSelected(true);
 		nbPattesLabel=new JLabel("nombre de pattes");
 		nbPattesLabel.setFont(font);
 		nbPattesLabel.setForeground(Color.white);
-		nbPattes=new SpinnerNumberModel(2, 0, 4, 1); 
+		nbPattes=new SpinnerNumberModel(2, 0, 4, 1);
 		JSpinner pattes = new JSpinner(nbPattes);
 		panDep.add(terre);
 		panDep.add(eau);
 		panDep.add(air);
 		panDep.add(nbPattesLabel);
-		panDep.add(pattes);
-		
-		
-		//Période d'activité
-		JPanel panPer = new JPanel();
+		panDep.add(pattes);*/
+
+
+		//P?riode d'activit?
+		/*JPanel panPer = new JPanel();
 		panPer.setBackground(Color.black);
 		panPer.setPreferredSize(new Dimension(250,100));
 		TitledBorder periode;
-		periode = BorderFactory.createTitledBorder("Période d'activité");
+		periode = BorderFactory.createTitledBorder("P?riode d'activit?");
 		periode.setTitleFont(font);
 		periode.setTitleColor(Color.white);
 		panPer.setBorder(periode);
@@ -146,14 +154,14 @@ public class CreateDrone extends JDialog implements ActionListener{
 		bgP.add(diurne);
 		bgP.add(noct);
 		panPer.add(diurne);
-		panPer.add(noct);
-		
-		//Caractéristiques
-		JPanel panCar = new JPanel();
+		panPer.add(noct);*/
+
+		//Caract?ristiques
+		/*JPanel panCar = new JPanel();
 		panCar.setBackground(Color.black);
 		panCar.setPreferredSize(new Dimension(250,100));
 		TitledBorder carac;
-		carac = BorderFactory.createTitledBorder("Caractéristiques");
+		carac = BorderFactory.createTitledBorder("Caract?ristiques");
 		carac.setTitleFont(font);
 		carac.setTitleColor(Color.white);
 		panCar.setBorder(carac);
@@ -177,10 +185,10 @@ public class CreateDrone extends JDialog implements ActionListener{
 		vitMaxL.setFont(font);
 		vitMaxL.setForeground(Color.white);
 	    panCar.add(vitMaxL);
-	    panCar.add(spinV);
-		
+	    panCar.add(spinV);*/
+
 		//Couleur
-		JPanel panCou = new JPanel();
+		/*JPanel panCou = new JPanel();
 		panCou.setBackground(Color.black);
 		panCou.setPreferredSize(new Dimension(250,100));
 		TitledBorder couleur;
@@ -208,62 +216,63 @@ public class CreateDrone extends JDialog implements ActionListener{
 		bleuL.setFont(font);
 		bleuL.setForeground(Color.white);
 	    panCou.add(bleuL);
-	    panCou.add(spinB);
-		
-		
-	    JPanel boutons = new JPanel();
+	    panCou.add(spinB);*/
+
+
+		JPanel boutons = new JPanel();
 		boutons.setBackground(Color.black);
 		boutons.setSize(100,100);
-		creer= new JButton("Créer");  
-		annuler= new JButton("Annuler");  
+		creer= new JButton("Cr?er");
+		annuler= new JButton("Annuler");
 		creer.addActionListener(this);
 		annuler.addActionListener(this);
 		boutons.add(creer);
 		boutons.add(annuler);
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
 		pan.add(panNom);
-		pan.add(panReg);
+		/*pan.add(panReg);
 		pan.add(panDep);
 		pan.add(panPer);
 		pan.add(panCar);
-		pan.add(panCou);
+		pan.add(panCou);*/
 		pan.add(boutons);
-		
-		
-		
+
+
+
 		add(pan);
-		  
-	  
+
+
 	}
 	@Override
-	*/public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent arg0) {
 
 		if(arg0.getSource() == annuler)
 		{
 			this.setVisible(false);
 		}else
 		{
-			int r = (int) rouge.getValue();
+			/*int r = (int) rouge.getValue();
 			int v = (int) vert.getValue();
 			int b = (int) bleu.getValue();
 			int p = (int) poids.getValue();
 			int t = (int) taille.getValue();
 			int vM = (int) vitMax.getValue();
-			int nbP = (int) nbPattes.getValue();
+			int nbP = (int) nbPattes.getValue();*/
 			String nom = nomT.getText();
-			boolean carnivore = carn.isSelected();
+			/*boolean carnivore = carn.isSelected();
 			boolean periode = diurne.isSelected();
 			boolean terrestre = terre.isSelected();
 			boolean aquatique = eau.isSelected();
-			boolean aerien = air.isSelected();
-			//GameManager.creationAnimal(nom,carnivore,periode,terrestre,aquatique,aerien,nbP,p,t,vM,r,v,b);
+			boolean aerien = air.isSelected();*/
+			if(petit.isSelected()) GameManager.createDrone(nom,10);
+			else if(grand.isSelected()) GameManager.createDrone(nom, 0);
 			this.setVisible(false);
 		}
-		
+
 	}
 }  

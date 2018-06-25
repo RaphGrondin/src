@@ -1,7 +1,11 @@
 package Model;
 
+import View.SideMenu;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Vector;
 
 //@SuppressWarnings("serial")
 public class GameManager{
@@ -85,6 +89,9 @@ public class GameManager{
             /*if (getTime().getM()==0 && nbItems() < 20) {
                 addItem();
             }*/
+            for(Drone drone : drones){
+
+            }
             /*for (int i=0; i<animaux.size();i++) {
                 //Case c = p.getCase(animaux.get(i).position.getX(), animaux.get(i).position.getY());
                 animaux.get(i).run(animaux, nourritures, t, p.getCases());
@@ -119,14 +126,16 @@ public class GameManager{
 
     public static void addBigDrone()
     {
-        Drone d = new BigDrone("Big Drone");
-        drones.add(d);
+        /* d = new BigDrone("Big Drone");
+        drones.add(d);*/
+        createDrone(Integer.toString(nbDrones()+1), 0);
     }
 
     public static void addLittleDrone()
     {
-        Drone d = new LittleDrone("Little Drone");
-        drones.add(d);
+        /*Drone d = new LittleDrone("Little Drone");
+        drones.add(d);*/
+        createDrone(Integer.toString(nbDrones()+1), 10);
     }
 
     public static void addStation() {
@@ -136,13 +145,23 @@ public class GameManager{
 
     public static void createDrone (String name, int size)
     {
-        Drone d;
         if (size == 10) {
-            d = new LittleDrone(name);
+            drones.add(new LittleDrone(name));
         } else {
-            d = new BigDrone(name);
+            drones.add(new BigDrone(name));
         }
-        drones.add(d);
+        String[] names;
+        if (nbDrones() == 0) {
+            names = new String[1];
+            names[0] = "Aucun Element";
+        } else {
+            names = new String[nbDrones()];
+            for(int i = 0 ; i<nbDrones() ; i++){
+                names[i] = GameManager.getDrones().get(i).getName();
+            }
+        }
+        DefaultComboBoxModel model = new DefaultComboBoxModel(names);
+        SideMenu.getMyList().setModel(model);
     }
 
     public static int getWidth() {

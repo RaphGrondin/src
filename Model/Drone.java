@@ -20,6 +20,7 @@ public class Drone extends Element {
 		this.setImage("src/Model/_img/drone/drone.png");
 		this.fuel = 100;
 		this.score = 0;
+		this.pck = null;
 	}
 
 	public Drone(float x, float y, String name, int size, float fuel, int score) {
@@ -28,24 +29,34 @@ public class Drone extends Element {
 		this.fuel = fuel;
 		this.score = score;
 	}
-	
+
 	public int getScore() {
 		return this.score;
 	}
-	
+
 	public void setScore(int score){
 		this.score = score;
 	}
-	
+
 	public float getFuel() {
 		return this.fuel;
 	}
-	
+
 	public void setFuel(float fuel) {
 		this.fuel = fuel;
 	}
 
-	public void move()
+	public void move() {
+		if(getFuel() != 0) {
+			if(this.pck == null) shiftToPackage();
+			else shiftToDestination();
+
+		} else {
+			crash();
+		}
+	}
+
+	/*public void move()
 	{
 		if(getFuel() == 0) {
 			crash();
@@ -84,9 +95,42 @@ public class Drone extends Element {
 		if(T.getM()==0) {
 			updateEtat(animaux,nourritures);
 		}
+	}*/
+
+	public void shiftToPackage(){
+		double d = 1000;
+		for(Package pck : GameManager.getPackages()){
+			// voir pour implenter tâche de drone
+			if(d > Vec.dist(pck.getPosition(), this.position)) {
+				d = Vec.dist(pck.getPosition(), this.position);
+				double x = pck.getPosition().getX()-this.position.getX();
+				double y = pck.getPosition().getY()-this.position.getY();
+				Vec v = new Vec(x,y);
+				double ang = v.heading();
+				this.acceleration = new Vec(Math.cos(ang), Math.sin(ang));
+				if(Vec.dist(pck.getPosition(),this.position) <= this.size) {
+					this.pck = pck;
+					GameManager.getPackages().remove(pck);
+					break;
+				}
+			}
+		}
 	}
 
-	private void updatePos(List<Case> cases)
+	public void shiftToDestination(){
+		if(Vec.dist(this.pck.getDestination(),this.position) <= this.size){
+			this.pck = null;
+			this.score ++;
+		} else {
+			double x = pck.getDestination().getX() - this.position.getX();
+			double y = pck.getDestination().getY() - this.position.getY();
+			Vec v = new Vec(x,y);
+			double ang = v.heading();
+			this.acceleration = new Vec(Math.cos(ang), Math.sin(ang));
+		}
+	}
+
+	/*private void updatePos(List<Case> cases)
 	{
 
 		vitesse.add(acceleration);
@@ -96,9 +140,9 @@ public class Drone extends Element {
 		position.add(vitesse);
 
 
-	}
+	}*/
 
-	void updateEtat(List<Animal> animaux,List<Nourriture> nourritures)
+	/*void updateEtat(List<Animal> animaux,List<Nourriture> nourritures)
 
 	{
 		if(vitesse.mag()==0)
@@ -133,9 +177,9 @@ public class Drone extends Element {
 			reveil();
 		}
 
-	}
+	}*/
 
-	public void wakeup()
+	/*public void wakeup()
 	{
 
 		Random rnd1= new Random();
@@ -149,16 +193,16 @@ public class Drone extends Element {
 
 		vitesse = new Vec (Vx,Vy);
 		acceleration = new Vec (Accx,Accy);
-	}
+	}*/
 
-	public void dormir()
+	/*public void dormir()
 	{
 		vitesse.mult(0);
 		acceleration.mult(0);
 
-	}
+	}*/
 
-	public void mourrir(List<Nourriture> nourritures,List<Animal> animaux)
+	/*public void mourrir(List<Nourriture> nourritures,List<Animal> animaux)
 	{
 		if(this.getPosition().getX() < GameManager.getLargeur() || this.getPosition().getX() > 0 || this.getPosition().getY() > 0 || this.getPosition().getY() < GameManager.getHauteur())
 		{
@@ -166,7 +210,7 @@ public class Drone extends Element {
 			nourritures.add(n);
 			animaux.remove(this);
 		}
-	}
+	}*/
 
 	/*public void manger(List<Nourriture> nourritures, List <Animal> animaux)
 	{
@@ -246,11 +290,11 @@ public class Drone extends Element {
 
 	}*/
 
-	public void separation(ArrayList<Drone> drones) {
+	/*public void separation(ArrayList<Drone> drones) {
 
 		/*if(regime == RegimeAlimentaire.Carnivore)
 		{*/
-			for(Drone d : drones)
+			/*for(Drone d : drones)
 			{
 				double x=getX()-d.getX();
 				double y=getY()-d.getY();
@@ -260,7 +304,7 @@ public class Drone extends Element {
 				v.mult(0.5);
 				acceleration.add(v);
 			}
-	}
+	}*/
 
 	public void crash()
 	{
@@ -269,7 +313,7 @@ public class Drone extends Element {
 			GameManager.getPackages().add(pck);
 		}
 		GameManager.getDrones().remove(this);
-		/*if (getX() > GameManager.getWidth()-(50+getSize()) )
+		if (getX() > GameManager.getWidth()-(50+getSize()) )
 		{
 			double start1 = -2;
 			double end1 = -1;
@@ -313,7 +357,7 @@ public class Drone extends Element {
 			double result2 = start2 + (random * (end2 - start2));
 			acceleration= new Vec(result1,result2);
 
-		}*/
+		}
 
 
 	}
@@ -369,7 +413,7 @@ public class Drone extends Element {
 		}
 	}*/
 
-	public void deplacer(){
+	/*public void deplacer(){
 		int xmax = GameManager.getWidth();
 		int ymax = GameManager.getHeight();
 		if (position.getX() > xmax - 25){
@@ -414,7 +458,7 @@ public class Drone extends Element {
 	public void shift(){
 		//double d = 1000;
 		for (int i=0;i<packages.size();i++){
-			if(animaux.get(i).regime != RegimeAlimentaire.Carnivore){
+			if(drones.get(i).regime != RegimeAlimentaire.Carnivore){
 				if ( d > Vec.dist(animaux.get(i).position,position)){
 					d = Vec.dist(animaux.get(i).position,position);
 					Animal cible=animaux.get(i);
