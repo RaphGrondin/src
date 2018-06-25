@@ -106,7 +106,7 @@ public class Drone extends Element {
         }
         updatePos();
         if(GameManager.getTime().getM()==0) {
-            updateEtat();
+            updateState();
         }
 
     }
@@ -254,10 +254,7 @@ public class Drone extends Element {
         }
     }
 
-    /**
-     *
-     */
-	public void updateEtat()	{
+	public void updateState()	{
 
         if(this.getFuel()>=100) {
             this.setFuel(100);
