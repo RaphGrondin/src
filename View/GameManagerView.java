@@ -8,13 +8,9 @@ import Model.*;
 import Model.Package;
 
 /**
- * @author Pierrick
  *
- */
-/**
- *
- * @author Pierrick
- *
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  */
 public class GameManagerView extends JPanel{
 	private static final long serialVersionUID = 1L;

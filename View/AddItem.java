@@ -15,7 +15,8 @@ import Model.GameManager;
 
 /**
  *
- * @author Pierrick
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  *
  */
 public class AddItem extends JPanel implements ActionListener{

@@ -11,6 +11,8 @@ import Model.GameManager;
 
 /**
  *
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  */
 public class Clock extends JPanel	{
 

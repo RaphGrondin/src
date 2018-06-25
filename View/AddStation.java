@@ -13,8 +13,8 @@ import javax.swing.SwingConstants;
 
 /**
  *
- * @author Pierrick
- *
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  */
 public class AddStation extends JPanel implements ActionListener{
 

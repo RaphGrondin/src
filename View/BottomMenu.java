@@ -9,8 +9,8 @@ import javax.swing.*;
 
 /**
  *
- * @author Pierrick
- *
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  */
 public class BottomMenu extends JPanel implements ActionListener{
 

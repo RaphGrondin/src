@@ -5,8 +5,8 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Pierrick
- *
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  */
 public class ViewPlateau extends JPanel{
 	private static final long serialVersionUID = 1L;

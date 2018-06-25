@@ -10,8 +10,8 @@ import javax.swing.JButton;
 
 /**
  *
- * @author Pierrick
- *
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  */
 public class Button extends JButton implements MouseListener {
 

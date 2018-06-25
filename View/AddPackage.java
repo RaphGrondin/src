@@ -16,8 +16,8 @@ import Model.GameManager;
 
 /**
  *
- * @author Pierrick
- *
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  */
 public class AddPackage extends JPanel implements ActionListener{
 

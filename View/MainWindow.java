@@ -6,8 +6,8 @@ import javax.swing.*;
 
 /**
  *
- * @author Pierrick
- *
+ * @author Pierrick GRAF
+ * @author Raphaël GRONDIN
  */
 public class MainWindow extends JFrame{
     private static final long serialVersionUID = 1L;
