@@ -61,17 +61,15 @@ public class Drone extends Element {
         if (getFuel() == 0) {
             crash();
         } else {
+            if (this.getFuel()<=30) {
+                findStation();
+            }
+
             if (pck == null) {
                 findPackage();
             } else {
                 findStation();
             }
-            //findPackage();
-            /*if (getFuel() <= 30) {
-                findStation();
-            } else {
-                findStation();
-            }*/
         }
         updatePos();
         if(GameManager.getTime().getM()==0) {
@@ -83,6 +81,8 @@ public class Drone extends Element {
     public void crash() {
 
         if (pck != null) {
+            pck.setX(getX());
+            pck.setY(getY());
             GameManager.getPackages().add(pck);
         }
         GameManager.getDrones().remove(this);
@@ -92,28 +92,52 @@ public class Drone extends Element {
     public void findPackage() {
         double	d = 10000000;
         for(int i=0; i< GameManager.getPackages().size();i++) {
-            if(d > Vec.dist(position, GameManager.getPackages().get(i).position)) {
-                d=Vec.dist(position, GameManager.getPackages().get(i).position);
-                double x=GameManager.getPackages().get(i).getX()-this.getX();
-                double y=GameManager.getPackages().get(i).getY()-this.getY();
-                Vec v =new Vec(x,y);
-                double ang = v.heading();
-                speed.mult(0.1);
-                acceleration=new Vec(Math.cos(ang),Math.sin(ang));
-                acceleration.mult(15);
-                if(this.getX()+this.getSize() >= GameManager.getPackages().get(i).getX()
-                        && this.getX() <= GameManager.getPackages().get(i).getX()+20
-                        && getY()+this.getSize() >= GameManager.getPackages().get(i).getY()
-                        && getY() < GameManager.getPackages().get(i).getY()+20) {
+            if (this instanceof LittleDrone) {
+                if (GameManager.getPackages().get(i) instanceof LittlePackage) {
+                    if (d > Vec.dist(position, GameManager.getPackages().get(i).position)) {
+                        d = Vec.dist(position, GameManager.getPackages().get(i).position);
+                        double x = GameManager.getPackages().get(i).getX() - this.getX();
+                        double y = GameManager.getPackages().get(i).getY() - this.getY();
+                        Vec v = new Vec(x, y);
+                        double ang = v.heading();
+                        speed.mult(0.1);
+                        acceleration = new Vec(Math.cos(ang), Math.sin(ang));
+                        acceleration.mult(15);
+                        if (this.getX() + this.getSize() >= GameManager.getPackages().get(i).getX()
+                                && this.getX() <= GameManager.getPackages().get(i).getX() + 20
+                                && getY() + this.getSize() >= GameManager.getPackages().get(i).getY()
+                                && getY() < GameManager.getPackages().get(i).getY() + 20) {
+                            speed.mult(0.1);
+                            acceleration.mult(0.1);
+                            pck = GameManager.getPackages().get(i);
+                            GameManager.getPackages().remove(GameManager.getPackages().get(i));
+                            this.setImage("src/Model/_img/drone/drone_package.png");
+                        }
+                    }
+                }
+            } else {
+                if(d > Vec.dist(position, GameManager.getPackages().get(i).position)) {
+                    d=Vec.dist(position, GameManager.getPackages().get(i).position);
+                    double x=GameManager.getPackages().get(i).getX()-this.getX();
+                    double y=GameManager.getPackages().get(i).getY()-this.getY();
+                    Vec v =new Vec(x,y);
+                    double ang = v.heading();
                     speed.mult(0.1);
-                    acceleration.mult(0.1);
-                    pck = GameManager.getPackages().get(i);
-                    GameManager.getPackages().remove(GameManager.getPackages().get(i));
-                    this.setImage("src/Model/_img/drone/drone_package.png");
+                    acceleration=new Vec(Math.cos(ang),Math.sin(ang));
+                    acceleration.mult(15);
+                    if(this.getX()+this.getSize() >= GameManager.getPackages().get(i).getX()
+                            && this.getX() <= GameManager.getPackages().get(i).getX()+20
+                            && getY()+this.getSize() >= GameManager.getPackages().get(i).getY()
+                            && getY() < GameManager.getPackages().get(i).getY()+20) {
+                        speed.mult(0.1);
+                        acceleration.mult(0.1);
+                        pck = GameManager.getPackages().get(i);
+                        GameManager.getPackages().remove(GameManager.getPackages().get(i));
+                        this.setImage("src/Model/_img/drone/drone_package.png");
+                    }
                 }
             }
         }
-
     }
 
     public void findStation() {
@@ -134,6 +158,9 @@ public class Drone extends Element {
                         && getY() < GameManager.getStations().get(i).getY()+20) {
                     speed.mult(0.1);
                     acceleration.mult(0.1);
+                    pck = null;
+                    this.setImage("src/Model/_img/drone/drone.png");
+                    this.setFuel(100);
                 }
             }
         }
@@ -204,6 +231,11 @@ public class Drone extends Element {
     }
 
 	public void updateEtat()	{
+
+        if(this.getFuel()>=100) {
+            this.setFuel(100);
+        }
+        this.setFuel(this.getFuel()-10);
 		if (getFuel() <=0 ) {
 			crash();
 		}
