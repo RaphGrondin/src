@@ -14,7 +14,7 @@ public class Item extends Element {
         int y = rnd.nextInt(GameManager.getHeight()-(int)getSize());
         this.setX(x+getSize()/2);
         this.setY(y+getSize()/2);
-        this.setImage("Model/_img/item/flash.png");
+        this.setImage("src/Model/_img/item/flash.png");
     }
 
     public Item(float x, float y, String name, int size, int value) {
