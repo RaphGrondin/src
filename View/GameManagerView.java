@@ -7,7 +7,8 @@ import javax.swing.*;
 import Model.*;
 import Model.Package;
 
-/**
+/** Implements the view of the GameManager, displaying the board and its contents
+ * (Drones, Stations, Items, Packages).
  *
  * @author Pierrick GRAF
  * @author Raphaël GRONDIN
@@ -17,58 +18,58 @@ public class GameManagerView extends JPanel{
 	private static float coefficientX = 1;
 	private static float coefficientY = 1;
 
-	/**
+	/** Default empty Constructor.
 	 *
 	 */
 	public GameManagerView() {
 
 	}
 
-	/**
+	/** Getter for the coefficient on X.
 	 *
-	 * @return
+	 * @return return the coefficient on X.
 	 */
 	public static float getCoefficientX() {
 		return coefficientX;
 	}
 
-	/**
+	/** Setter for the coefficient on X.
 	 *
-	 * @param cx
+	 * @param cx the coefficient on X to be set for the GameManagerView.
 	 */
 	public static void setCoefficientX(float cx) {
 		coefficientX = cx;
 	}
 
-	/**
+	/** Getter for the coefficient on Y.
 	 *
-	 * @return
+	 * @return return the coefficient on Y.
 	 */
 	public static float getCoefficientY() {
 		return coefficientY;
 	}
 
-	/**
+	/** Setter for the coefficient on Y.
 	 *
-	 * @param cy
+	 * @param cy the coefficient on Y to be set for the GameManagerView.
 	 */
 	public static void setCoefficientY(float cy) {
 		coefficientY = cy;
 	}
 
-	/**
+	/** Computes an integer ratio of the input depending on the coefficient on X.
 	 *
-	 * @param x
-	 * @return
+	 * @param x the value to which the coefficient on X has to be multiplied.
+	 * @return return the integer value of the input multiplied by the coefficient on X.
 	 */
 	public static int ratioX(double x){
 		return (int)(x*getCoefficientX());
 	}
 
-	/**
+	/** Computes an integer ratio of the input depending on the coefficient on Y.
 	 *
-	 * @param y
-	 * @return
+	 * @param y the value to which the coefficient on Y has to be multiplied.
+	 * @return return the integer value of the input multiplied by the coefficient on Y.
 	 */
 	public static int ratioY(double y){
 		return (int)(y*getCoefficientY());
@@ -87,14 +88,12 @@ public class GameManagerView extends JPanel{
 
 		for (int i=0; i<GameManager.getStations().size();i++){
 			Station s = GameManager.getStations().get(i);
-			//g.drawImage(s.getImage(),(int)ratioX(0-s.getSize()/2),(int)ratioY(0-s.getSize()/2),(int)s.getSize(), (int)s.getSize(),this);
 			g.drawImage(s.getImage(),ratioX(s.getX()-s.getSize()/2),ratioY(s.getY()-s.getSize()/2),(int)s.getSize(), (int)s.getSize(),this);
 		}
 
 		for (int i=0; i<GameManager.getDrones().size();i++){
 			Drone d = GameManager.getDrones().get(i);
 			g.drawImage(d.getImage(),ratioX(d.getX()-d.getSize()/2),ratioY(d.getY()-d.getSize()/2),(int)d.getSize(), (int)d.getSize(),this);
-			//this.add(d.getFuelProgress());
 		}
 
 		for (int i=0;i<GameManager.getPackages().size();i++) {
@@ -105,26 +104,9 @@ public class GameManagerView extends JPanel{
 
 		for (int i=0; i<GameManager.getItems().size();i++){
 			Item it = GameManager.getItems().get(i);
-			//g.drawImage(s.getImage(),(int)ratioX(0-s.getSize()/2),(int)ratioY(0-s.getSize()/2),(int)s.getSize(), (int)s.getSize(),this);
 			g.drawImage(it.getImage(),ratioX(it.getX()-it.getSize()/2),ratioY(it.getY()-it.getSize()/2),(int)it.getSize(), (int)it.getSize(),this);
 		}
 
-	}
-
-	/**
-	 *
-	 * @return
-	 */
-	public int getLargeur() {
-		return getWidth();
-	}
-
-	/**
-	 *
-	 * @return
-	 */
-	public int getHauteur() {
-		return getHeight();
 	}
 
 }

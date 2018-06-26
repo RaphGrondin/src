@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 import Model.GameManager;
 
-/**
+/** Implements the visual of the Clock using the Time class to create a display of the time.
  *
  * @author Pierrick GRAF
  * @author Raphaël GRONDIN
@@ -19,7 +19,7 @@ public class Clock extends JPanel	{
 
 	private static final long serialVersionUID = 1L;
 
-	/**
+	/** Constructor for the Clock. Defines the dimensions for the clock.
 	 *
 	 */
 	public Clock()

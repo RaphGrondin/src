@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 
-/**
+/** Implements a personalized version of a JButton for uses in the project.
  *
  * @author Pierrick GRAF
  * @author Raphaël GRONDIN
@@ -20,9 +20,9 @@ public class Button extends JButton implements MouseListener {
 	private String name;
 	private Color c1,c2;
 
-	/**
+	/** Constructor for Button. Creates a new button displaying the input value as a text.
 	 *
-	 * @param str
+	 * @param str string to display on the button.
 	 */
 	public Button(String str){
 		super(str);

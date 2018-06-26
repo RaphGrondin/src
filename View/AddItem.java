@@ -13,7 +13,8 @@ import javax.swing.SwingConstants;
 
 import Model.GameManager;
 
-/**
+/** Implements the graphical interface using a JPanel for the creation of items
+ * by the user.
  *
  * @author Pierrick GRAF
  * @author Raphaël GRONDIN
@@ -25,7 +26,8 @@ public class AddItem extends JPanel implements ActionListener{
 	private Button item = new Button("Item"); //$NON-NLS-1$
 	private JLabel text = new JLabel("Add item"); //$NON-NLS-1$
 
-	/**
+	/** Constructor for the AddItem. Sets a background color as well as the different
+	 * buttons and displays needed.
 	 *
 	 */
 	public AddItem()

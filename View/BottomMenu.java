@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-/**
+/** Implementation of a graphical interface using a JPanel for the bottom menu.
  *
  * @author Pierrick GRAF
  * @author Raphaël GRONDIN
@@ -21,7 +21,8 @@ public class BottomMenu extends JPanel implements ActionListener{
 	private AddItem pan3;
 	private JTabbedPane tab;
 
-	/**
+	/** Constructor for the BottomMenu. Sets the dimensions and incorporates the different tabs
+	 * (AddDrone, AddPackage, AddItem).
 	 *
 	 */
 	public BottomMenu()
